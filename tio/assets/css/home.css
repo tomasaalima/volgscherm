@@ -1,0 +1,101 @@
+@charset "UTF-8";
+
+:root {
+    --width-cab-divs: 200px;
+    --background-cab: rgb(176, 197, 197);
+    --background-dashboard: white;
+}
+
+.cabecalho {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: var(--background-cab);
+}
+
+.cab-user-img {
+    width: 80px;
+    padding: 10px;
+    border-radius: 50%;
+}
+
+.cab-logo-img {
+    width: var(--width-cab-divs);
+    display: flex;
+    flex-direction: column;
+    padding: 5px 0px 0px 10px;
+}
+
+.cab-user {
+    width: var(--width-cab-divs);
+    text-align: end;
+}
+
+.cab-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.322);
+    margin: 15px;
+}
+
+.cab-nav > nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10%;
+}
+
+.dashboard-div, .info {
+    margin: 15px;
+    padding: 10px;
+    background-color: var(--background-dashboard);
+    border: 1px solid black;
+}
+
+.dashboard-btn {
+    border: none;
+    background-color: white;
+}
+
+.dashboard-btn:hover {
+    cursor: pointer;
+}
+
+.actual {
+    border-bottom: 2px solid rgba(56, 56, 190, 0.555) ;
+}
+
+.dash-btn-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.dash-grafico-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: 50%;
+}
+
+.grafico {
+    margin-top: 10px;
+}
+
+.info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.info-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.info-data {
+    margin-bottom: 10px;
+}

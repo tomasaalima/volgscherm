@@ -1,0 +1,44 @@
+@charset "UTF-8";
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.container-login {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.line {
+    width: 1px;
+    height: 300px;
+    justify-content: center;
+}
+
+.logo-image {
+    width: 400px;
+}
+
+.formulary {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10%;
+    height: 100%;
+    width: 400px;
+}
+
+.container-line {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.btn-execute {
+    margin-top: 10px;
+    width: 50%;
+}
