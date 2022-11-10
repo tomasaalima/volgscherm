@@ -1,0 +1,177 @@
+@charset "UTF-8";
+
+:root {
+    --width-cab-divs: 110px;
+    --background-cab: rgb(206, 134, 134);
+    --background-dashboard: white;
+}
+
+main {
+    height: 100%;
+    background-color: rgba(216, 216, 216, 0.2);
+}
+
+.cabecalho {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: var(--background-cab);
+}
+
+.cab-user-img {
+    width: 40px;
+    margin: 5px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.cab-logo-img {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5px 0px 0px 10px;
+    width: var(--width-cab-divs);
+    object-fit: cover;
+}
+
+.cab-user {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: var(--width-cab-divs);
+    gap: 10px;
+}
+
+.cab-user > .line {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.cab-user > .line > hr {
+    border: none;
+    width: 1px;
+    height: 30px;
+    background-color: black;
+}
+
+.cab-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.300);
+    padding-top: 10px;
+    margin: 0px 15px 0px 15px;
+}
+
+.cab-alert {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    gap: 20px;
+}
+
+.cab-alert > div > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 110%;
+    padding: 2px 10px 2px 10px;
+    border-radius: 10px;
+}
+
+.teste {
+    color: white;
+}
+
+
+.badge {
+    background-color: rgb(255, 255, 255);
+    padding: 0px 4px 0px 4px;
+    border-radius: 50%;
+}
+
+.cab-alert > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.cab-nav > nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10%;
+}
+
+.triple-line-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-right: 15px;
+    gap: 4px;
+}
+
+.triple-line-menu > div {
+    background-color: black;
+    width: 30px;
+    height: 2px;
+    border-radius: 10px;
+}
+
+.dashboard-div, .info, .historico {
+    margin: 15px;
+    padding: 10px;
+    background-color: var(--background-dashboard);
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
+}
+
+.dashboard-btn {
+    border: none;
+    background-color: white;
+}
+
+.dashboard-btn:hover, .cab-user-img:hover, .triple-line-menu:hover, .cab-alert > div > div:hover {
+    cursor: pointer;
+}
+
+.actual {
+    border-bottom: 2px solid rgba(56, 56, 190, 0.555) ;
+}
+
+.dash-btn-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.dash-grafico-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: 50%;
+}
+
+.grafico {
+    margin-top: 10px;
+}
+
+.info {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    gap: 10%;
+}
+
+.info-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    color: rgb(99, 97, 97);
+}
+
+.info-data {
+    margin-bottom: 10px;
+}
