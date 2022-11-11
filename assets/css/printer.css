@@ -1,0 +1,67 @@
+
+.rename {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font: bolder 0.5em normal Arial;
+    color: var(--palette-C);
+    padding-left: 10px;
+}
+
+.printer-logo > img{
+    width: 100px;
+}
+
+.printer > div {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    text-align: center;
+}
+
+.printer-infos {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.info > span {
+    padding: 5px;
+    border: 1px solid var(--palette-D);
+}
+
+.rename:hover {
+    cursor: pointer;
+    color: var(--palette-D);
+}
+
+.printer-name {
+    cursor: default;
+}
+
+.printer-btns {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    padding-left: 15px;
+    gap: 10px;
+}
+
+.printer-btn {
+    padding: 5px;
+    color: var(--palette-A);
+    border-radius: 2px;
+    border: none;
+    background-color: var(--palette-D);
+}
+
+.printer-btn:hover {
+    color: var(--palette-C);
+}

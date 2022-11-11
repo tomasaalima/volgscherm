@@ -1,5 +1,14 @@
 @charset "UTF-8";
 
+:root {
+    --palette-A: #1D1E26;
+    --palette-B: #202126;
+    --palette-C: #737272;
+    --palette-D: #889ABF;
+
+    --header-div-width: 110px;
+}
+
 * {
     text-decoration: none;
     padding: 0;

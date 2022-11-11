@@ -1,0 +1,21 @@
+
+.main-printers {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 50px;
+}
+
+.search-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+}
+
+.search-bar > input:focus {
+    outline-color: var(--palette-D);
+}
+
+.glass:hover {
+    cursor: pointer;
+}
