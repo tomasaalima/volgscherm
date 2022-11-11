@@ -23,10 +23,13 @@ body, .container-line, .formulary {
 }
 
 .formulary {
-    
     padding: 10%;
     height: 100%;
     width: 400px;
+}
+
+.label-formulary {
+    padding-top: 3px;
 }
 
 .input-formulary:focus {

@@ -1,18 +1,26 @@
 @charset "UTF-8";
 
+
 :root {
+    --palette-A: #1D1E26;
+    --palette-B: #202126;
+    --palette-C: #737272;
+    --palette-D: #889ABF;
+
     --header-div-width: 110px;
-    --header-bg: #ce8686;
-    --dashboard-bg: #ffffff;
+}
+
+* {
+    color: var(--palette-D);
 }
 
 main {
     height: 100%;
-    background-color: #d8d8d833;
+    background-color: var(--palette-B);
 }
 
 header {
-    background-color: var(--header-bg);
+    background-color: var(--palette-A);
 }
 
 .header-logo {
@@ -40,6 +48,7 @@ header {
     background-color: #ffffff;
     padding: 0px 4px 0px 4px;
     border-radius: 50%;
+    color: var(--palette-A);
 }
 
 .header-user {
@@ -59,11 +68,11 @@ header {
     border: none;
     width: 1px;
     height: 30px;
-    background-color: black;
+    background-color: var(--palette-D);
 }
 
 .triple-line-menu > div {
-    background-color: #000000;
+    background-color: var(--palette-D);
     width: 30px;
     height: 2px;
     border-radius: 10px;
@@ -77,20 +86,21 @@ header {
 .main-dashboard, .main-info, .historic {
     margin: 15px;
     padding: 10px;
-    background-color: var(--dashboard-bg);
-    box-shadow: 0px 0px 2px #00000080;
+    background-color: var(--palette-A);
+    box-shadow: 0px 0px 2px var(--palette-D);
 }
 
 .info-group {
-    color: #636161;
+    color: var(--palette-C);
 }
 
 .info-data {
     margin-bottom: 10px;
+    color: var(--palette-D);
 }
 
 .main-nav {
-    border-bottom: 1px solid rgba(128, 128, 128, 0.300);
+    border-bottom: 1px solid var(--palette-C);
     padding-top: 10px;
     margin: 0px 15px 0px 15px;
 }
@@ -106,11 +116,12 @@ header {
 
 .graphic-nav-item  {
     border: none;
-    background-color: white;
+    background-color: transparent;
+    color: var(--palette-D);
 }
 
 .actual {
-    border-bottom: 2px solid rgba(56, 56, 190, 0.555) ;
+    border-bottom: 2px solid var(--palette-D) ;
 }
 
 .main-info, .main-nav > nav {

@@ -1,0 +1,128 @@
+@charset "UTF-8";
+
+main {
+    height: 100%;
+    align-items: center;
+}
+
+.config-container {
+    width: 900px;
+    height: 900px;
+    background-color: var(--palette-A);
+    box-shadow: 0px 0px 2px var(--palette-D);
+}
+
+.user-img-edit {
+    width: 200px;
+    height: 200px;
+    border: 1px solid var(--palette-D);
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-logo {
+    width: 300px;
+}
+
+ul {
+    list-style-type: none;
+    font: normal 1.2em normal Arial;
+    box-shadow: 0px 0px 2px var(--palette-D);
+    width: 30%;
+}
+
+article {
+    text-align: center;
+    padding: 50px;
+    width: 70%;
+    gap: 50px;
+}
+
+.theme-color {
+    width: 25%;
+    height: 20px;
+    border: 1px solid white;
+}
+
+.img-edit, .logo-edit, .theme-edit {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.themes {
+    gap: 10px;
+    width: 100px;
+    height: 50px;
+}
+
+.themes:hover {
+    background-color: rgba(255, 255, 255, 0.01);
+    border-radius: 10px;
+}
+
+.actual-theme:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.actual-theme {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+.config-topics {
+    padding: 20px 0px 20px 20px;
+}
+
+.config-topics:hover {
+    border-left: 1px solid #ffffff33;
+    background-color: #ffffff03;
+    cursor: pointer;
+}
+
+.actual-atribute {
+    border-left: 1px solid var(--palette-D);
+}
+
+.actual-atribute:hover {
+    border-left: 1px solid var(--palette-D);
+}
+
+.submit-btn {
+    background-color: var(--palette-D);
+    color: var(--palette-A);
+    border: none;
+    border-radius: 3px;
+    width: 50%;
+    height: 30px;
+}
+
+.link {
+    cursor: pointer;
+}
+
+.theme-edit, main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+ul, .config-topics, .themes, article {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+
+.dark-theme, .light-theme, .tech-theme, .config-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.theme-edit > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+
