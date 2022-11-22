@@ -11,9 +11,11 @@
         }
     </style>
 
-    <link rel="stylesheet" href="../css/base.css">
-    <link rel="stylesheet" href="../css/home.css">
-    <link rel="stylesheet" href="../css/config.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="config.css">
     
     <title>volgscherm</title>
 
@@ -39,45 +41,68 @@
                         <img class="user-img-edit" src="../img/user-img.png" alt="imagem do usuário">
                     </div>
                     <div>
-                        <span class="link">Mudar Imagem de Usuário</span>
+                        <input id="upload" type="file"/>
+                        <a href="upload.php" class="link" id="upload_link">Mudar Imagem de Usuário</a>
                     </div>
                 </div>
                 <div class="logo-edit">
                     <div>
-                        <img class="user-logo" src="../img/logo-exemple.png" alt="logo do usuário">
+                        <img type="file" class="user-logo" src="../img/logo-exemple.png" alt="logo do usuário">
                     </div>
                     <div>
-                        <span class="link">Mudar Logo</span>
+                        <input id="upload2" type="file"/>
+                        <a href="upload.php" class="link" id="upload_link2">Mudar Logo</a>
                     </div>
+                    <script>
+                        $(function(){
+                            $("#upload_link").on('click', function(e){
+                                e.preventDefault();
+                                $("#upload:hidden").trigger('click');
+                            });
+                        });
+                        $(function(){
+                            $("#upload_link2").on('click', function(e){
+                                e.preventDefault();
+                                $("#upload2:hidden").trigger('click');
+                            });
+                        });
+                    </script>
                 </div>
                 <div class="theme-edit">
                     <div>
-                        <div class="themes link actual-theme">
-                            <div class="dark-theme">
-                                <div style="background-color: #1D1E26;" class="theme-color"></div>
-                                <div style="background-color: #202126;"  class="theme-color"></div>
-                                <div style="background-color: #737272;"  class="theme-color"></div>
-                                <div style="background-color: #889ABF;"  class="theme-color"></div>
-                            </div>
-                            <aside>Dark</aside>
+                        <div id="01" class="themes link">
+                            <button class="theme-btn" onclick="setTheme('01')">
+                                <div class="dark-theme">
+                                    <div style="background-color: #1D1E26;" class="theme-color"></div>
+                                    <div style="background-color: #202126;"  class="theme-color"></div>
+                                    <div style="background-color: #737272;"  class="theme-color"></div>
+                                    <div style="background-color: #889ABF;"  class="theme-color"></div>
+                                </div>
+                                <aside>Dark</aside>
+                            </button>
                         </div>
-                        <div class="themes link">
-                            <div class="light-theme">
-                                <div class="theme-color"></div>
-                                <div class="theme-color"></div>
-                                <div class="theme-color"></div>
-                                <div class="theme-color"></div>
-                            </div>
-                            <aside>Ligh</aside>
+                        <div id="02" class="themes link">
+                            <button class="theme-btn" onclick="setTheme('02')">
+                                <div class="light-theme">
+                                    <div style="background-color: #ffffff;" class="theme-color"></div>
+                                    <div style="background-color: #EBE8E7;" class="theme-color"></div>
+                                    <div style="background-color: #9DFFEC;" class="theme-color"></div>
+                                    <div style="background-color: #2D73EB;" class="theme-color"></div>
+                                </div>
+                                <script src="config.js"></script>
+                                <aside>Ligh</aside>
+                            </button>
                         </div>
-                        <div class="themes link">
-                            <div class="tech-theme">
-                                <div class="theme-color"></div>
-                                <div class="theme-color"></div>
-                                <div class="theme-color"></div>
-                                <div class="theme-color"></div>
-                            </div>
-                            <aside>Tech</aside>
+                        <div id="03" class="themes link">
+                            <button class="theme-btn" onclick="setTheme('03')">
+                                <div class="tech-theme">
+                                    <div style="background-color: #224D59;" class="theme-color"></div>
+                                    <div style="background-color: #3A8499;" class="theme-color"></div>
+                                    <div style="background-color: #58C6E5;" class="theme-color"></div>
+                                    <div style="background-color: #49A5BF;" class="theme-color"></div>
+                                </div>
+                                <aside>Tech</aside>
+                            </button>
                         </div>
                     </div>
                 </div>

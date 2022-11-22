@@ -37,10 +37,24 @@ article {
     gap: 50px;
 }
 
+.media-input {
+    background-color: transparent;
+    border: none;
+    text-align: center;
+}
+
+#upload_link, #upload_link2{
+    text-decoration:none;
+}
+
+#upload, #upload2{
+    display:none
+}
+
 .theme-color {
     width: 25%;
     height: 20px;
-    border: 1px solid white;
+    border: 1px solid var(--palette-E);
 }
 
 .img-edit, .logo-edit, .theme-edit {
@@ -50,22 +64,12 @@ article {
 }
 
 .themes {
-    gap: 10px;
     width: 100px;
     height: 50px;
 }
 
 .themes:hover {
-    background-color: rgba(255, 255, 255, 0.01);
-    border-radius: 10px;
-}
-
-.actual-theme:hover {
-    background-color: rgba(255, 255, 255, 0.05);
-}
-
-.actual-theme {
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: var(--palette-E);
     border-radius: 10px;
 }
 
@@ -122,6 +126,15 @@ ul, .config-topics, .themes, article {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+}
+
+.theme-btn {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    gap: 10px;
 }
 
 

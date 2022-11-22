@@ -18,7 +18,7 @@
             <hr class="line">
         </div>
         <div class="container-formulary">
-            <form class="formulary" action="assets/script/home.php" method="post">
+            <form class="formulary" action="assets/script/config.php" method="post">
                 <label class="label-formulary" for="user">Usuário</label>
                 <input class="input-formulary" type="text" name="user">
                 <label class="label-formulary" for="password">Senha</label>

@@ -30,14 +30,14 @@ header {
 }
 
 .alert {
-    color: #ffffff;
+    color: #FFFFFF;
 }
 
 .badge {
-    background-color: #ffffff;
+    background-color: #FFFFFF;
     padding: 0px 4px 0px 4px;
     border-radius: 50%;
-    color: var(--palette-A);
+    color: var(--palette-D);
 }
 
 .header-user {
