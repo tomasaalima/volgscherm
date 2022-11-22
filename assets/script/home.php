@@ -20,7 +20,7 @@
         <div class="main-nav">
             <nav>
                 <a href="#" class="actual">DashBoard</a>
-                <a href="#">Impressoras</a>
+                <a href="printers.php">Impressoras</a>
             </nav>
         </div>
         <div class="main-info">

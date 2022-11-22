@@ -22,7 +22,7 @@
     <main>
         <div class="main-nav">
             <nav>
-                <a href="#">DashBoard</a>
+                <a href="home.php">DashBoard</a>
                 <a href="#" class="actual">Impressoras</a>
             </nav>
         </div>

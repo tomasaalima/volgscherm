@@ -48,10 +48,20 @@ body, .container-line, .formulary {
 }
 
 .submit-btn {
-    margin-top: 10px;
-    width: 50%;
+    width: 45%;
 }
 
-.submit-btn:hover {
+.toback { 
+    width: 100%;
+}
+
+.submit-btn:hover, .toback {
     cursor: pointer;
+}
+
+.form-btns {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 10px;
 }

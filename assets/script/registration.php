@@ -31,7 +31,12 @@
                 <div class="sub-elements">
                     <a href="#">Resgatar Chave de Acesso</a>
                 </div>
-                <button class="submit-btn" type="submit">Cadastrar</button>
+                <div class="form-btns">
+                    <a class="submit-btn" href="../../index.php">
+                        <input class="toback" type="button" value="Voltar">
+                    </a>
+                    <input class="submit-btn" type="submit" value="Cadastrar">
+                </div>
             </form>
         </div>
     </div>

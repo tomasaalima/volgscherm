@@ -18,16 +18,18 @@
             <hr class="line">
         </div>
         <div class="container-formulary">
-            <form class="formulary" action="assets/script/config.php" method="post">
+            <form class="formulary" action="assets/script/home.php" method="post">
                 <label class="label-formulary" for="user">Usuário</label>
                 <input class="input-formulary" type="text" name="user">
                 <label class="label-formulary" for="password">Senha</label>
                 <input class="input-formulary" type="password" name="password" autocomplete="current-password">
                 <div class="sub-elements">
-                    <a href="#">Esqueceu Sua Senha?</a>
-                    <a href="#">Cadastrar Usuário</a>
+                    <a href="assets/script/redefine.php">Esqueceu Sua Senha?</a>
+                    <a href="assets/script/registration.php">Cadastrar Usuário</a>
                 </div>
-                <button class="submit-btn" type="submit">Executar</button>
+                <div class="form-btns">
+                    <button class="submit-btn" type="submit">Executar</button>
+                </div>
             </form>
         </div>
     </div>

@@ -19,7 +19,7 @@
             <hr class="line">
         </div>
         <div class="container-formulary">
-            <form class="formulary" action="#" method="post">
+            <form id="form" class="formulary" action="#" method="post">
                     <label class="label-formulary" for="password">Nova Senha</label>
                     <input class="input-formulary" type="password" name="password">
                     <label class="label-formulary" for="password">Repita a Senha</label>
@@ -29,7 +29,12 @@
                 <div class="sub-elements">
                     <a href="#">Resgatar Chave de Acesso</a>
                 </div>
-                <button class="submit-btn" type="submit">Redefinir</button>
+                <div class="form-btns">
+                    <a class="submit-btn" href="../../index.php">
+                        <input class="toback" type="button" value="Voltar">
+                    </a>
+                    <input class="submit-btn" type="submit" value="Redefinir">
+                </div>
             </form>
         </div>
     </div>
