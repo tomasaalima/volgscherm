@@ -9,7 +9,7 @@ main {
 }
 
 header {
-    background-color: var(--palette-A);
+    background-color: var(--palette-A); 
 }
 
 .header-logo {
