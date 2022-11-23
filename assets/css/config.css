@@ -22,6 +22,8 @@ main {
 
 .user-logo {
     width: 300px;
+    height: 180px;
+    object-fit: cover;
 }
 
 ul {
@@ -88,13 +90,13 @@ article {
     border-left: 1px solid var(--palette-D);
 }
 
-.submit-btn {
+.apply-btn {
     background-color: var(--palette-D);
     color: var(--palette-A);
     border: none;
     border-radius: 3px;
-    width: 10%;
-    height: 10px;
+    width: 100px;
+    height: 21px;
 }
 
 .link {

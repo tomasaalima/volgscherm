@@ -3,7 +3,8 @@
         importHeader();
 
         include_once('upload.php');
-        uploadFile();
+        uploadFileUser();
+        uploadFileLogo();
 ?>
 
 <!DOCTYPE html>
@@ -14,8 +15,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="base.css">
-    <link rel="stylesheet" href="home.css">
-    <link rel="stylesheet" href="config.css">
+    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/config.css">
     
     <title>volgscherm</title>
 
@@ -29,33 +30,44 @@
                     <li class="li-topic">Personalização</li>
                 </div>
                 <div class="config-topics">
-                    <li class="li-topic">Ajuda</li>
+                    <a href="help.php">
+                        <li class="li-topic">Ajuda</li>
+                    </a>
                 </div>
             </ul>
             <article>
                 <div class="img-edit">
                     <div>
-                        <img id="iii" class="user-img-edit" src="uploads/user-img.jpg" alt="imagem do usuário">
+                        <img class="user-img-edit" src="uploads/user-img.jpg" alt="imagem do usuário">
                     </div>
                     <div class="choose-file">
                         Mudar Imagem de Usuário
-                        <form action="" method="post" enctype="multipart/form-data">
-                            <input type="file" name="arquive">
-                            <input type="submit" value="Aplicar" name="action" class="submit-btn">
+                        <form action="#" method="post" enctype="multipart/form-data">
+                            <input type="file" name="arquive-i">
+                            <input style="cursor: pointer;" type="submit" value="Aplicar" name="action-i" class="apply-btn">
                         </form>
                     </div>
                 </div>
                 <div class="logo-edit">
                     <div>
-                        <img type="file" class="user-logo" src="../img/logo-exemple.png" alt="logo do usuário">
+                        <img type="file" class="user-logo" src="uploads/logo-exemple.png" alt="logo do usuário">
                     </div>
+
+
+
+
+
                     <div class="choose-file">
-                        Mudar Logo
-                        <form action="" method="post" enctype="multipart/form-data">
-                            <input type="file" name="arquive">
-                            <input type="submit" value="Aplicar" name="action" class="submit-btn">
+                        Mudar Logo (Recomendado: 600x300)
+                        <form action="#" method="post" enctype="multipart/form-data">
+                            <input type="file" name="arquive-ii">
+                            <input style="cursor: pointer;" type="submit" value="Aplicar" name="action-ii" class="apply-btn">
                         </form>
                     </div>
+
+
+
+
                 </div>
                 <div class="theme-edit">
                     <div>

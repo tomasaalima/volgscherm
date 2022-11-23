@@ -4,7 +4,7 @@ function importHeader(){
     echo "
 <header>
     <div class='header-logo'>
-        <img src='../img/logo-exemple.png' alt='logo da empresa'>
+        <img src='uploads/logo-exemple.png' alt='logo da empresa'>
     </div>
     <div class='header-alert'>
         <div>

@@ -14,7 +14,11 @@ header {
 
 .header-logo {
     padding: 5px 0px 0px 10px;
-    width: var(--header-div-width);
+    width: var(--header-div-width);   
+}
+
+.header-logo > img {
+    max-height: 50px;
     object-fit: cover;
 }
 
