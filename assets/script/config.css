@@ -2,6 +2,7 @@
 main {
     height: 100%;
     align-items: center;
+    padding-top: 50px;
 }
 
 .config-container {
@@ -34,21 +35,17 @@ article {
     text-align: center;
     padding: 50px;
     width: 70%;
-    gap: 50px;
+    gap: 30px;
+}
+
+.choose-file {
+    gap: 20px;
 }
 
 .media-input {
     background-color: transparent;
     border: none;
     text-align: center;
-}
-
-#upload_link, #upload_link2{
-    text-decoration:none;
-}
-
-#upload, #upload2{
-    display:none
 }
 
 .theme-color {
@@ -96,15 +93,15 @@ article {
     color: var(--palette-A);
     border: none;
     border-radius: 3px;
-    width: 50%;
-    height: 30px;
+    width: 10%;
+    height: 10px;
 }
 
 .link {
     cursor: pointer;
 }
 
-.theme-edit, main {
+.theme-edit, main, .choose-file {
     display: flex;
     flex-direction: column;
     justify-content: center;

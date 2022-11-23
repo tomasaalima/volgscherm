@@ -40,7 +40,7 @@ function importHeader(){
     </div>
     <div class='header-user'>
         <div class='user-image'>
-            <img class='user-img' src='../img/user-img.png' alt='imagem do usuário'>
+            <img class='user-img' src='uploads/user-img.jpg' alt='imagem do usuário'>
         </div>
         <div class='line'>
             <hr>

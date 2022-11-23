@@ -1,17 +1,17 @@
+<?php
+        include_once('header.php');
+        importHeader();
+
+        include_once('upload.php');
+        uploadFile();
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <style>
-        main{
-            padding-top: 50px;
-        }
-    </style>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 
     <link rel="stylesheet" href="base.css">
     <link rel="stylesheet" href="home.css">
@@ -21,10 +21,7 @@
 
 </head>
 <body>
-    <?php
-        include_once('header.php');
-        importHeader();
-    ?>
+    
     <main>
         <div class="config-container">
             <ul>
@@ -38,35 +35,27 @@
             <article>
                 <div class="img-edit">
                     <div>
-                        <img class="user-img-edit" src="../img/user-img.png" alt="imagem do usuário">
+                        <img id="iii" class="user-img-edit" src="uploads/user-img.jpg" alt="imagem do usuário">
                     </div>
-                    <div>
-                        <input id="upload" type="file"/>
-                        <a href="upload.php" class="link" id="upload_link">Mudar Imagem de Usuário</a>
+                    <div class="choose-file">
+                        Mudar Imagem de Usuário
+                        <form action="" method="post" enctype="multipart/form-data">
+                            <input type="file" name="arquive">
+                            <input type="submit" value="Aplicar" name="action" class="submit-btn">
+                        </form>
                     </div>
                 </div>
                 <div class="logo-edit">
                     <div>
                         <img type="file" class="user-logo" src="../img/logo-exemple.png" alt="logo do usuário">
                     </div>
-                    <div>
-                        <input id="upload2" type="file"/>
-                        <a href="upload.php" class="link" id="upload_link2">Mudar Logo</a>
+                    <div class="choose-file">
+                        Mudar Logo
+                        <form action="" method="post" enctype="multipart/form-data">
+                            <input type="file" name="arquive">
+                            <input type="submit" value="Aplicar" name="action" class="submit-btn">
+                        </form>
                     </div>
-                    <script>
-                        $(function(){
-                            $("#upload_link").on('click', function(e){
-                                e.preventDefault();
-                                $("#upload:hidden").trigger('click');
-                            });
-                        });
-                        $(function(){
-                            $("#upload_link2").on('click', function(e){
-                                e.preventDefault();
-                                $("#upload2:hidden").trigger('click');
-                            });
-                        });
-                    </script>
                 </div>
                 <div class="theme-edit">
                     <div>
@@ -105,9 +94,6 @@
                             </button>
                         </div>
                     </div>
-                </div>
-                <div class="btn-div">
-                    <input class="submit-btn link" type="button" value="Submeter">
                 </div>
             </article>
         </div>
