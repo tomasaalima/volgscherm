@@ -1,3 +1,40 @@
+<?php
+    include_once("assets/script/db_connection.php");
+
+    if(isset($_POST['user']) || isset($_POST['password'])){
+            
+        if(strlen($_POST['user'] == 0)){
+            echo "Preencha o nome de usuário";
+        }else if(strlen($_POST['password'] == 0)){
+            echo "Preencha sua senha";
+        }else{
+            $user = $connection->real_escape_string($_POST['user']);
+            $password = $connection->real_escape_string($_POST['password']);
+
+            $sql = "SELECT * FROM administrador WHERE usuario = '$user' AND senha = '$password'";
+            $result = $connection->query($sql) or die("Falha na execução do código SQL"). $connection->error;
+            
+            $quantidade = $result->num_rows;
+
+            if($quantidade == 1){
+                $user_data = $result->fetch_assoc();
+
+                if(!isset($_SESSION)){
+                    session_start();
+                }
+
+                $_SESSION['user'] = $user_data['usuario'];
+                $_SESSION['password'] = $user_data['password'];
+
+                header("location: assets/script/home.php");
+
+            }else{
+                echo "Falha ao logar! Usuário ou Senha Incorretos";
+            }
+        }
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -18,7 +55,7 @@
             <hr class="line">
         </div>
         <div class="container-formulary">
-            <form class="formulary" action="assets/script/config.php" method="post">
+            <form id="form" class="formulary" action="" method="post">
                 <label class="label-formulary" for="user">Usuário</label>
                 <input class="input-formulary" type="text" name="user">
                 <label class="label-formulary" for="password">Senha</label>
