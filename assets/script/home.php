@@ -10,11 +10,36 @@
 
     <title>volgscherm</title>
 
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Year', 'Sales', 'Expenses'],
+          ['2013',  1000,      400],
+          ['2014',  1170,      460],
+          ['2015',  660,       1120],
+          ['2016',  1030,      540]
+        ]);
+
+        var options = {
+          title: 'Company Performance',
+          hAxis: {title: 'Year',  titleTextStyle: {color: '#333'}},
+          vAxis: {minValue: 0},
+          backgroundColor: 'black'
+        };
+
+        var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+
 </head>
 <body>
     <?php
-        include_once('header.php');
-        importHeader();
+        require('header.php'); 
     ?>
     <main>
         <div class="main-nav">
@@ -36,25 +61,15 @@
             </div>
         </div>
         <div class="main-dashboard">
-            <h1>DASHBOARD</h1>
+        
             <div class="dashboard-graphic">
-                <div class="graphic-nav">
-                    <input class="graphic-nav-item actual" type="button" value="1 D">
-                    <input class="graphic-nav-item" type="button" value="5 D">
-                    <input class="graphic-nav-item" type="button" value="1 M">
-                    <input class="graphic-nav-item" type="button" value="6 M">
-                    <input class="graphic-nav-item" type="button" value="YTD">
-                    <input class="graphic-nav-item" type="button" value="1 A">
-                    <input class="graphic-nav-item" type="button" value="Máx">
-                </div>
-                <div class="graphic">
-                    GRAFICO
-                </div>
+            <div id="chart_div" style="width: 100%; height: 500px;"></div>
             </div>
-            <div class="printer-btns">
+            
+        </div>
+        <div class="printer-btns">
                 <button class="printer-btn">Exportar Relatórios</button>
-            </div>
-        </div> 
+            </div> 
         <div class="historic"><h1>HISTÓRICO</h1></div>
     </main>
 

@@ -1,7 +1,3 @@
-<?php header("Content-type: text/html; charset=utf-8");
-
-function importHeader(){
-    echo "
 <header>
     <div class='header-logo'>
         <img src='uploads/logo-exemple.png' alt='logo da empresa'>
@@ -51,5 +47,4 @@ function importHeader(){
             <div></div>
         </div>
     </div>
-</header>";
-}
+</header>
