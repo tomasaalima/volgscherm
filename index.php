@@ -3,9 +3,9 @@
 
     if(isset($_POST['user']) || isset($_POST['password'])){
             
-        if(strlen($_POST['user'] == 0)){
+        if(strlen($_POST['user'] == "")){
             echo "Preencha o nome de usuário";
-        }else if(strlen($_POST['password'] == 0)){
+        }else if(strlen($_POST['password'] == "")){
             echo "Preencha sua senha";
         }else{
             $user = $connection->real_escape_string($_POST['user']);
@@ -61,8 +61,8 @@
                 <label class="label-formulary" for="password">Senha</label>
                 <input class="input-formulary" type="password" name="password" autocomplete="current-password">
                 <div class="sub-elements">
-                    <a href="assets/script/redefine.php">Esqueceu Sua Senha?</a>
-                    <a href="assets/script/registration.php">Cadastrar Usuário</a>
+                    <a href="assets/script/change.php">Esqueceu Sua Senha?</a>
+                    <a href="assets/script/creation.php">Cadastrar Usuário</a>
                 </div>
                 <div class="form-btns">
                     <button class="submit-btn" type="submit">Executar</button>
