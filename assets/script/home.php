@@ -1,3 +1,53 @@
+<?php
+    include("protect.php");
+    require("db_connection.php");
+
+    $day = date("d");
+    $month = date("m");
+    $year = date("Y");
+    $period = "1A";
+    $today = $day."-".$month."-".$year;
+    $date = "";
+
+    if($period != "MAX"){
+        switch($period){
+            case "1D":{
+                $date = ($day-1)."-".$month."-".$year;
+                break;
+            }
+            case "1M":{
+                $date = $day."-".($month-1)."-".$year;
+                break;
+            }
+            case "5M":{
+                $date = $day."-".($month-5)."-".$year;
+                break;
+            }
+            case "1A":{
+                $date = $day."-".$month."-".($year-1);
+                break;
+            }
+        }
+
+        $sql = "SELECT data_execucao, qtd_impressoes FROM dados_impressora WHERE data_execucao BETWEEN $date and $today ORDER BY data_execucao ASC";
+        $result = $connection->query($sql) or die("Falha na execução do código SQL") . $connection->error;
+
+    }else{
+        $sql = "SELECT data_execucao, qtd_impressoes FROM dados_impressora ORDER BY data_execucao ASC";
+        $result = $connection->query($sql) or die("Falha na execução do código SQL") . $connection->error;
+    }
+    
+    $data_array = [];
+
+    while($db_data = mysqli_fetch_assoc($result)){
+        $value = "'".$db_data['data_execucao']."',".$db_data['qtd_impressoes'];
+        array_push($data_array, $value);
+    }
+
+    foreach($data_array as $value){
+        echo $value;
+    }
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -21,19 +71,17 @@
         function drawBasic() {
 
             var data = new google.visualization.DataTable();
-            data.addColumn('number', 'X');
+            data.addColumn('string', 'X');
             data.addColumn('number', 'Dogs');
 
             data.addRows([
-                [0, 0],
-                [1, 10],
-                [2, 23],
-                [3, 17],
-                [4, 18],
-                [5, 9],
-                [6, 11],
-                [7, 27],
-                [8, 33]
+                
+                <?php
+                    foreach($data_array as $value){
+                        echo "[".$value."],";
+                    }
+                ?>
+                
             ]);
 
             var options = {
@@ -43,7 +91,7 @@
                 vAxis: {
                     title: 'Popularity'
                 },
-                backgroundColor: 'transparent'
+                backgroundColor: '#fff'
             };
 
             var chart = new google.visualization.LineChart(document.getElementById('line-chart'));
