@@ -6,5 +6,3 @@
     $data = $result->fetch_assoc();
 
     $product_key = $data["chave"];
-            
-?>

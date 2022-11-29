@@ -1,14 +1,15 @@
 <?php
-        require('header.php');
-        
+require('header.php');
 
-        include_once('upload.php');
-        uploadFileUser();
-        uploadFileLogo();
+
+include_once('upload.php');
+uploadFileUser();
+uploadFileLogo();
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,12 +18,13 @@
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/home.css">
     <link rel="stylesheet" href="../css/config.css">
-    
+
     <title>volgscherm</title>
 
 </head>
+
 <body>
-    
+
     <main>
         <div class="config-container">
             <ul>
@@ -75,9 +77,9 @@
                             <button class="theme-btn" onclick="setTheme('01')">
                                 <div class="dark-theme">
                                     <div style="background-color: #1D1E26;" class="theme-color"></div>
-                                    <div style="background-color: #202126;"  class="theme-color"></div>
-                                    <div style="background-color: #737272;"  class="theme-color"></div>
-                                    <div style="background-color: #889ABF;"  class="theme-color"></div>
+                                    <div style="background-color: #202126;" class="theme-color"></div>
+                                    <div style="background-color: #737272;" class="theme-color"></div>
+                                    <div style="background-color: #889ABF;" class="theme-color"></div>
                                 </div>
                                 <aside>Dark</aside>
                             </button>
@@ -111,4 +113,5 @@
         </div>
     </main>
 </body>
+
 </html>

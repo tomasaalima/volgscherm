@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,10 +16,10 @@
     <title>volgscherm</title>
 
 </head>
+
 <body>
     <?php
-        include_once('header.php');
-        importHeader();
+    include_once('header.php');
     ?>
     <main>
         <div class="main-nav">
@@ -58,6 +59,7 @@
             <button class="printer-btn">Exportar Relatório</button>
         </div>
     </main>
-    
+
 </body>
+
 </html>

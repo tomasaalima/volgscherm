@@ -1,11 +1,11 @@
-function setTheme(id){/*
+function setTheme(id) {/*
     let remove = document.querySelector('.actual-theme');
     remove.classList.remove("actual-theme");*/
 
     let theme = document.getElementById(id);
-    theme.classList.add("actual-theme"); 
+    theme.classList.add("actual-theme");
 
-    switch(id){
+    switch (id) {
         case '01': {
             document.documentElement.style.setProperty('--palette-A', '#1D1E26');
             document.documentElement.style.setProperty('--palette-B', '#202126');
@@ -32,10 +32,10 @@ function setTheme(id){/*
         }
     }
 
-    
-/*
-    --palette-A: #ffffff;
-    --palette-B: #EBE8E7;
-    --palette-C: #9DFFEC;
-    --palette-D: #2D73EB;*/
+
+    /*
+        --palette-A: #ffffff;
+        --palette-B: #EBE8E7;
+        --palette-C: #9DFFEC;
+        --palette-D: #2D73EB;*/
 }

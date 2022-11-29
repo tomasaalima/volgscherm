@@ -54,4 +54,3 @@
 
         rename("uploads/".$filename, "uploads/logo-exemple.png");
   }
-?>

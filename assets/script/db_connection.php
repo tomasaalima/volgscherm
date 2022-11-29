@@ -6,4 +6,3 @@
     $dbName = 'volgscherm';
     
     $connection = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
-?>
