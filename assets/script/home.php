@@ -5,7 +5,7 @@
     $day = date("d");
     $month = date("m");
     $year = date("Y");
-    $period = "5M";
+    $period = "MAX";
     $today = $year."/".$month."/".$day;
     $date = "";
 
@@ -29,18 +29,18 @@
             }
         }
 
-        $sql = "SELECT data_execucao, qtd_impressoes FROM dados_impressora WHERE data_execucao BETWEEN '$date' and '$today' ORDER BY data_execucao ASC";
+        $sql = "SELECT data_execucao, total_impressoes FROM dados_impressora WHERE data_execucao BETWEEN '$date' and '$today' ORDER BY data_execucao ASC";
         $result = $connection->query($sql) or die("Falha na execução do código SQL") . $connection->error;
 
     }else{
-        $sql = "SELECT data_execucao, qtd_impressoes FROM dados_impressora ORDER BY data_execucao ASC";
+        $sql = "SELECT data_execucao, total_impressoes FROM dados_impressora ORDER BY data_execucao ASC";
         $result = $connection->query($sql) or die("Falha na execução do código SQL") . $connection->error;
     }
     
     $data_array = [];
 
     while($db_data = mysqli_fetch_assoc($result)){
-        $value = "'".$db_data['data_execucao']."',".$db_data['qtd_impressoes'];
+        $value = "'".$db_data['data_execucao']."',".$db_data['total_impressoes'];
         array_push($data_array, $value);
     }
 

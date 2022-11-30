@@ -1,21 +1,25 @@
 <?php
     require("db_connection.php");
 
-    $init = "172.26.129.170";
-    $end = "172.26.129.174";
+    $init = "10.26.1.200";
+    $end = "10.26.1.300";
     
     while(runRange($init, $end)){
         $init = runRange($init, $end);
 
-        $iso = shell_exec("wsl snmpget -Oqv -v2c -c public $init iso.3.6.1.2.1.1.4.0");
 
-        /*capturar serial*/
+        $serial = shell_exec("wsl snmpget -Oqv -v1 -t1 -r1 -c public $init iso.3.6.1.2.1.43.5.1.1.17.1");     /*iso.3.6.1.2.1.1.4.0*/
 
-        if($iso === null){
+        if($serial === null){
             echo "null";
         }else{
-            registerPrinter("1",$init);
-            echo "Dado captado".$iso;
+            $model = shell_exec("wsl snmpget -Oqv -v1 -t1 -r1 -c public $init iso.3.6.1.2.1.25.3.2.1.3.1");
+            $impressions = shell_exec("wsl snmpget -Oqv -t1 -r1 -v1 -c public $init iso.3.6.1.2.1.43.10.2.1.4.1.1");
+            $place = shell_exec("wsl snmpget -Oqv -v1 -t1 -r1 -c public $init iso.3.6.1.2.1.1.6.0");
+            echo "Serie: ".$serial."<br>Modelo:".$model."<br>impressoes:".$impressions."<br>Lugar:".$place;
+
+            registerPrinter("1",$init, $model, $impressions, $place);
+            echo "<br>Dado captado";
         }
         echo "<br>";
         
@@ -57,7 +61,7 @@
         }
     }
 
-    function registerPrinter($serial, $ip){
+    function registerPrinter($serial, $ip, $model, $impressions, $place){
 
         $sql = "SELECT * FROM impressora WHERE serial = '$serial'";
         global $connection;
@@ -68,14 +72,7 @@
             if($quantidade == 1){
                 $connection->query("UPDATE impressora SET endereco_ip = '$ip' WHERE serial = '$serial'") or die("Falha na execução do código SQL"). $connection->error;
             }else{
-                
+                $now = date('Y-m-d');
+                $connection->query("INSERT INTO impressora(serial, endereco_ip, data_reconhecimento, modelo, status, setor) VALUES('$serial', '$ip', '$now','$model', '0', '$place')"). $connection->error;
             }
     }
-
-    /*
-    include("db_connection.php");
-
-    
-    $sql = "UPDATE administrador SET usuario=$iso WHERE usuario='adm'";
-    $connection->query($sql) or die("Falha na execução do código SQL"). $connection->error;
-    */
