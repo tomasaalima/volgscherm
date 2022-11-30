@@ -5,7 +5,7 @@
     $day = date("d");
     $month = date("m");
     $year = date("Y");
-    $period = "1A";
+    $period = "5M";
     $today = $year."/".$month."/".$day;
     $date = "";
 
