@@ -6,30 +6,30 @@
     $month = date("m");
     $year = date("Y");
     $period = "1A";
-    $today = $day."-".$month."-".$year;
+    $today = $year."/".$month."/".$day;
     $date = "";
 
     if($period != "MAX"){
         switch($period){
-            case "1D":{
-                $date = ($day-1)."-".$month."-".$year;
-                break;
-            }
-            case "1M":{
-                $date = $day."-".($month-1)."-".$year;
+            case "1A":{
+                $date = ($year-1)."/".$month."/".$day;
                 break;
             }
             case "5M":{
-                $date = $day."-".($month-5)."-".$year;
+                $date = $year."/".($month-5)."/".$day;
                 break;
             }
-            case "1A":{
-                $date = $day."-".$month."-".($year-1);
+            case "1M":{
+                $date = $year."/".($month-1)."/".$day;
+                break;
+            }
+            case "1D":{
+                $date = $year."/".$month."/".($day-1);
                 break;
             }
         }
 
-        $sql = "SELECT data_execucao, qtd_impressoes FROM dados_impressora WHERE data_execucao BETWEEN $date and $today ORDER BY data_execucao ASC";
+        $sql = "SELECT data_execucao, qtd_impressoes FROM dados_impressora WHERE data_execucao BETWEEN '$date' and '$today' ORDER BY data_execucao ASC";
         $result = $connection->query($sql) or die("Falha na execução do código SQL") . $connection->error;
 
     }else{
