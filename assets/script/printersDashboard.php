@@ -23,7 +23,7 @@
     <main>
         <div class="main-nav">
             <nav>
-                <a href="home.php">DashBoard</a>
+                <a href="dashboardHome.php">DashBoard</a>
                 <a href="#" class="actual">Impressoras</a>
             </nav>
         </div>

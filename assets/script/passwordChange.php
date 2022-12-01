@@ -1,6 +1,6 @@
 <?php
 include_once("db_connection.php");
-include_once("key.php");
+include_once("systemKey.php");
 
 if (isset($_POST['user-name']) || isset($_POST['password']) || isset($_POST['repeat-password']) || isset($_POST['key'])) {
 

@@ -1,5 +1,5 @@
 <?php
-    include("protect.php");
+    include("sessionprotect.php");
     require("db_connection.php");
 
     $day = date("d");
@@ -178,13 +178,13 @@
 
 <body>
     <?php
-    require('header.php');
+    require('headerBlock.php');
     ?>
     <main>
         <div class="main-nav">
             <nav>
                 <a href="#" class="actual">DashBoard</a>
-                <a href="printers.php">Impressoras</a>
+                <a href="printersDashboard.php">Impressoras</a>
             </nav>
         </div>
         <div class="main-info">

@@ -26,7 +26,7 @@
                 $_SESSION['user'] = $user_data['usuario'];
                 $_SESSION['password'] = $user_data['password'];
 
-                header("location: assets/script/home.php");
+                header("location: assets/script/dashboardHome.php");
 
             }else{
                 echo "Falha ao logar! Usuário ou Senha Incorretos";
@@ -61,8 +61,8 @@
                 <label class="label-formulary" for="password">Senha</label>
                 <input class="input-formulary" type="password" name="password" autocomplete="current-password">
                 <div class="sub-elements">
-                    <a href="assets/script/change.php">Esqueceu Sua Senha?</a>
-                    <a href="assets/script/creation.php">Cadastrar Usuário</a>
+                    <a href="assets/script/passwordChange.php">Esqueceu Sua Senha?</a>
+                    <a href="assets/script/userCreation.php">Cadastrar Usuário</a>
                 </div>
                 <div class="form-btns">
                     <button class="submit-btn" type="submit">Executar</button>

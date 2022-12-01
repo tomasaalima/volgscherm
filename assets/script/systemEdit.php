@@ -1,5 +1,5 @@
 <?php
-require('header.php');
+require('headerBlock.php');
 
 
 include_once('upload.php');
@@ -32,7 +32,7 @@ uploadFileLogo();
                     <li class="li-topic">Personalização</li>
                 </div>
                 <div class="config-topics">
-                    <a href="help.php">
+                    <a href="">
                         <li class="li-topic">Ajuda</li>
                     </a>
                 </div>
