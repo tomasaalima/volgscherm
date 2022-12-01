@@ -1,6 +1,9 @@
 <?php
     include("sessionprotect.php");
     require("db_connection.php");
+    require("systemThemeColors.php");
+
+    $systemColors = getColors();
 
     $day = date("d");
     $month = date("m");
@@ -37,15 +40,11 @@
         $result = $connection->query($sql) or die("Falha na execução do código SQL") . $connection->error;
     }
     
-    $data_array = [];
+    $generalDataArray = [];
 
     while($db_data = mysqli_fetch_assoc($result)){
         $value = "'".$db_data['data_execucao']."',".$db_data['total_impressoes'];
-        array_push($data_array, $value);
-    }
-
-    foreach($data_array as $value){
-        echo $value;
+        array_push($generalDataArray, $value);
     }
 ?>
 <!DOCTYPE html>
@@ -71,13 +70,13 @@
         function drawBasic() {
 
             var data = new google.visualization.DataTable();
-            data.addColumn('string', 'X');
-            data.addColumn('number', 'Dogs');
+            data.addColumn('string', 'data');
+            data.addColumn('number', 'Impressoes');
 
             data.addRows([
                 
                 <?php
-                    foreach($data_array as $value){
+                    foreach($generalDataArray as $value){
                         echo "[".$value."],";
                     }
                 ?>
@@ -85,13 +84,32 @@
             ]);
 
             var options = {
-                hAxis: {
-                    title: 'Time'
+                legend: {
+                    textStyle:{
+                        color:'<?php echo $systemColors[3];?>'
+                    }
                 },
                 vAxis: {
-                    title: 'Popularity'
+                    title: 'Tabela Geral de Impressões',
+                    textStyle:{
+                        color: '<?php echo $systemColors[3];?>'
+                    },
+                    titleTextStyle: {
+                    color: '<?php echo $systemColors[3];?>'
+                    }
                 },
-                backgroundColor: '#fff'
+                hAxis:{
+                    textStyle:{
+                        color: '<?php echo $systemColors[3];?>'
+                    }
+                },
+                series: {
+                    0: { color: '<?php echo $systemColors[3];?>' }
+                },
+                lineWidth: 5,
+                backgroundColor: 'transparent'
+                
+                
             };
 
             var chart = new google.visualization.LineChart(document.getElementById('line-chart'));
@@ -108,36 +126,35 @@
         function drawBasic() {
 
             var data = new google.visualization.DataTable();
-            data.addColumn('timeofday', 'Time of Day');
-            data.addColumn('number', 'Motivation Level');
+            data.addColumn('string', 'Impressora');
+            data.addColumn('number', 'Impressões');
 
             data.addRows([
-                [{
-                    v: [8, 0, 0],
-                    f: '8 am'
-                }, 1],
-                [{
-                    v: [9, 0, 0],
-                    f: '9 am'
-                }, 2],
-                [{
-                    v: [10, 0, 0],
-                    f: '10 am'
-                }, 3]
+                ['x',5000],
+                ['y',400],
+                ['z',4000],
+                ['u',2500],
+                ['v',6000],
+                ['w',3200]
             ]);
 
             var options = {
-                title: 'Motivation Level Throughout the Day',
-                hAxis: {
-                    title: 'Time of Day',
-                    format: 'h:mm a',
-                    viewWindow: {
-                        min: [7, 30, 0],
-                        max: [17, 30, 0]
+                vAxis: {
+                    title: 'Tabela de Impressões por Impressora',
+                    textStyle:{
+                        color: '<?php echo $systemColors[3];?>'
+                    },
+                    titleTextStyle: {
+                    color: '<?php echo $systemColors[3];?>'
+                    }
+                },legend: 'none',
+                hAxis:{
+                    textStyle:{
+                        color: '<?php echo $systemColors[3];?>'
                     }
                 },
-                vAxis: {
-                    title: 'Rating (scale of 1-10)'
+                series: {
+                    0: { color: '<?php echo $systemColors[3];?>' }
                 },
                 backgroundColor: 'transparent'
             };
@@ -203,10 +220,8 @@
 
             <div id="line-chart" style="width: 100%; height: 500px;"></div>
             <div id="bar-chart" style="width: 100%; height: 500px;"></div>
-            <div>
-                <div id="pie-chart" style="width: 100%; height: 500px;"></div>
+            <div id="pie-chart" style="width: 100%; height: 500px;"></div>
 
-            </div>
 
         </div>
         <div class="printer-btns">
