@@ -8,9 +8,26 @@
     $day = date("d");
     $month = date("m");
     $year = date("Y");
-    $period = "MAX";
+    $period = "";
     $today = $year."/".$month."/".$day;
     $date = "";
+
+    function setPeriod($x){
+        global $period;
+        $period = $x;
+    }
+    
+    if (isset($_GET['1D'])) {
+        setPeriod("1D");
+    }else if(isset($_GET['1M'])){
+        setPeriod("1M");
+    }else if(isset($_GET['5M'])){
+        setPeriod("5M");
+    }else if(isset($_GET['1A'])){
+        setPeriod("1A");
+    }else if(isset($_GET['MAX'])){
+        setPeriod("MAX");
+    }
 
     if($period != "MAX"){
         switch($period){
@@ -71,12 +88,12 @@
 
         global $date, $today, $connection;
 
-        $sql = "SELECT i.setor, di.data_execucao, SUM(di.total_impressoes) FROM impressora i, dados_impressora di WHERE i.serial = di.serial_impressora AND di.data_execucao BETWEEN '$date' and '$today'  GROUP BY i.setor";
+        $sql = "SELECT i.setor, di.data_execucao, SUM(di.novas_impressoes) FROM impressora i, dados_impressora di WHERE i.serial = di.serial_impressora AND di.data_execucao BETWEEN '$date' and '$today'  GROUP BY i.setor";
 
         $result = $connection->query($sql) or die("Falha na execução do código SQL") . $connection->error;
 
         while($db_data = mysqli_fetch_assoc($result)){
-            $value = "'".$db_data['setor']."',".$db_data['SUM(di.total_impressoes)'];
+            $value = "'".$db_data['setor']."',".$db_data['SUM(di.novas_impressoes)'];
             array_push($array, $value);
         }
 
@@ -93,6 +110,15 @@
 
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/home.css">
+
+    <style>
+        .period-nav {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 50px;
+        }
+    </style>
 
     <title>volgscherm</title>
 
@@ -209,16 +235,20 @@
 
         function drawChart() {
             var data = google.visualization.arrayToDataTable([
-                ['Task', 'Hours per Day'],
+                ['Task', 'Impressões por setor'],
                 <?php
+                if($sectorImpressionsArray == null){
+                    echo "['Ausência de Valores nesse período', 1]";
+                }else{
                     foreach($sectorImpressionsArray as $value){
                         echo "[".$value."],";
                     }
+                }
                 ?>
             ]);
 
             var options = {
-                title: 'Agrupamento por Setor',
+                title: 'Agrupamento por Setor no Período (<?php echo ($date == null)? "Todo o Período": $date." à ".$today ?>)',
                 titleTextStyle:{
                     color: '<?php echo $systemColors[3];?>'
                 },
@@ -262,7 +292,13 @@
             </div>
         </div>
         <div class="main-dashboard">
-
+            <nav class="period-nav">
+                <a href="dashboardHome.php?1D=true">1D</a>
+                <a href="dashboardHome.php?1M=true">1M</a>
+                <a href="dashboardHome.php?5M=true">5M</a>
+                <a href="dashboardHome.php?1A=true">1A</a>
+                <a href="dashboardHome.php?MAX=true">MAX</a>
+            </nav>
             <div id="line-chart" style="width: 100%; height: 500px;"></div>
             <div id="bar-chart" style="width: 100%; height: 500px;"></div>
             <div id="pie-chart" style="width: 50%; height: 500px; margin: auto;"></div>

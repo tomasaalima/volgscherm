@@ -102,6 +102,12 @@ header {
     width: 50%;
 }
 
+.period-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
 .graphic {
     margin-top: 10px;
 }
