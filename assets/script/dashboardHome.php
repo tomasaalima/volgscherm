@@ -32,19 +32,55 @@
             }
         }
 
-        $sql = "SELECT data_execucao, total_impressoes FROM dados_impressora WHERE data_execucao BETWEEN '$date' and '$today' ORDER BY data_execucao ASC";
+        $sql = "SELECT data_execucao, SUM(novas_impressoes), COUNT(DISTINCT serial_impressora) FROM dados_impressora WHERE data_execucao BETWEEN '$date' and '$today' GROUP BY data_execucao ORDER BY data_execucao ASC";
         $result = $connection->query($sql) or die("Falha na execução do código SQL") . $connection->error;
 
     }else{
-        $sql = "SELECT data_execucao, total_impressoes FROM dados_impressora ORDER BY data_execucao ASC";
+        $sql = "SELECT data_execucao, SUM(novas_impressoes), COUNT(DISTINCT serial_impressora) FROM dados_impressora GROUP BY data_execucao ORDER BY data_execucao ASC";
         $result = $connection->query($sql) or die("Falha na execução do código SQL") . $connection->error;
     }
     
     $generalDataArray = [];
 
     while($db_data = mysqli_fetch_assoc($result)){
-        $value = "'".$db_data['data_execucao']."',".$db_data['total_impressoes'];
+        $value = "'".$db_data['data_execucao']."',".$db_data['SUM(novas_impressoes)'].",".$db_data['COUNT(DISTINCT serial_impressora)'];
         array_push($generalDataArray, $value);
+    }
+
+    $printerImpressionsArray = getImpressionsByPrinter();
+
+    function getImpressionsByPrinter(){
+        $array = [];
+
+        $sql = "SELECT i.nome, di.serial_impressora, SUM(di.novas_impressoes) FROM impressora i, dados_impressora di WHERE i.serial = di.serial_impressora GROUP BY di.serial_impressora ORDER BY di.novas_impressoes DESC";
+        global $connection;
+        $result = $connection->query($sql) or die("Falha na execução do código SQL") . $connection->error;
+
+        while($db_data = mysqli_fetch_assoc($result)){
+            $value = "'".$db_data['nome']."',".$db_data['SUM(di.novas_impressoes)'];
+            array_push($array, $value);
+        }
+
+        return $array;
+    }
+    
+    $sectorImpressionsArray = getImpressionsBySector();
+
+    function getImpressionsBySector(){
+        $array = [];
+
+        global $date, $today, $connection;
+
+        $sql = "SELECT i.setor, di.data_execucao, SUM(di.total_impressoes) FROM impressora i, dados_impressora di WHERE i.serial = di.serial_impressora AND di.data_execucao BETWEEN '$date' and '$today'  GROUP BY i.setor";
+
+        $result = $connection->query($sql) or die("Falha na execução do código SQL") . $connection->error;
+
+        while($db_data = mysqli_fetch_assoc($result)){
+            $value = "'".$db_data['setor']."',".$db_data['SUM(di.total_impressoes)'];
+            array_push($array, $value);
+        }
+
+        return $array;
     }
 ?>
 <!DOCTYPE html>
@@ -71,7 +107,8 @@
 
             var data = new google.visualization.DataTable();
             data.addColumn('string', 'data');
-            data.addColumn('number', 'Impressoes');
+            data.addColumn('number', 'Nº de Impressoes Realizadas');
+            data.addColumn('number', 'Nº de Impressoras Utilizadas no dia');
 
             data.addRows([
                 
@@ -90,7 +127,7 @@
                     }
                 },
                 vAxis: {
-                    title: 'Tabela Geral de Impressões',
+                    title: 'Tabela Geral de Impressoras',
                     textStyle:{
                         color: '<?php echo $systemColors[3];?>'
                     },
@@ -127,15 +164,14 @@
 
             var data = new google.visualization.DataTable();
             data.addColumn('string', 'Impressora');
-            data.addColumn('number', 'Impressões');
+            data.addColumn('number', 'Nº Impressões');
 
             data.addRows([
-                ['x',5000],
-                ['y',400],
-                ['z',4000],
-                ['u',2500],
-                ['v',6000],
-                ['w',3200]
+                <?php
+                    foreach($printerImpressionsArray as $value){
+                        echo "[".$value."],";
+                    }
+                ?>
             ]);
 
             var options = {
@@ -174,17 +210,26 @@
         function drawChart() {
             var data = google.visualization.arrayToDataTable([
                 ['Task', 'Hours per Day'],
-                ['Work', 11],
-                ['Eat', 2],
-                ['Commute', 2],
-                ['Watch TV', 2],
-                ['Sleep', 7]
+                <?php
+                    foreach($sectorImpressionsArray as $value){
+                        echo "[".$value."],";
+                    }
+                ?>
             ]);
 
             var options = {
-                title: 'My Daily Activities',
+                title: 'Agrupamento por Setor',
+                titleTextStyle:{
+                    color: '<?php echo $systemColors[3];?>'
+                },
                 is3D: true,
-                backgroundColor: 'transparent'
+                backgroundColor: 'transparent',
+                legend: {
+                    textStyle:{
+                        color: '<?php echo $systemColors[3];?>'
+                    }
+                }
+
             };
 
             var chart = new google.visualization.PieChart(document.getElementById('pie-chart'));
@@ -220,7 +265,7 @@
 
             <div id="line-chart" style="width: 100%; height: 500px;"></div>
             <div id="bar-chart" style="width: 100%; height: 500px;"></div>
-            <div id="pie-chart" style="width: 100%; height: 500px;"></div>
+            <div id="pie-chart" style="width: 50%; height: 500px; margin: auto;"></div>
 
 
         </div>
