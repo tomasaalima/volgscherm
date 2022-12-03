@@ -33,9 +33,10 @@
     </style>
 
     <title>volgscherm</title>
-    
-    <!--API do google, Gráfico de linhas-->
+
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <!--API do google, Gráfico de linhas-->
     <script type="text/javascript">
         google.charts.load('current', {
             packages: ['corechart', 'line']
@@ -164,7 +165,7 @@
             ]);
 
             var options = {
-                title: 'Agrupamento por Setor no Período (<?php echo ($date == null)? "Todo o Período": $date." à ".$today ?>)',
+                title: 'Agrupamento por Setor (<?php echo ($date == null)? "Todo o Período": $date." à ".$today ?>)',
                 titleTextStyle:{
                     color: '<?php echo $systemColors[3];?>'//Inserção das cores do sistema via PHP
                 },

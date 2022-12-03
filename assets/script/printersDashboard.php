@@ -11,14 +11,26 @@
     <link rel="stylesheet" href="../css/printers.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+            .printer-object{
+            width: 30%;
+            border-collapse: collapse;
+            padding-top: 30px;
+        }
 
+        .objects-container{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        </style>
     <title>volgscherm</title>
 
 </head>
 
 <body>
     <?php
-    include_once('header.php');
+    include_once('headerBlock.php');
     ?>
     <main>
         <div class="main-nav">
@@ -29,14 +41,19 @@
         </div>
         <div class="main-slots">
             <div class="search-bar">
-                <input type="text" placeholder="Search..">
-                <button class="glass" type="submit">
-                    <i class="fa fa-search"></i>
-                </button>
+                <form action="" method="post">
+                    <input type="text" placeholder="Search..">
+                    <button class="glass" type="submit">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </form>
+                
             </div>
-            <printers>
-                <div>printer</div>
-            </printers>
+            <div class="objects-container">
+                <?php
+                    include('printerObject.php');
+                ?>
+            </div>
         </div>
         </div>
     </main>
