@@ -3,7 +3,6 @@
 }
 
 main {
-    height: 100%;
     background-color: var(--palette-B);
 }
 
@@ -118,6 +117,11 @@ header {
     color: var(--palette-D);
 }
 
+.report-btn {
+    margin-left: 20px;
+    text-decoration: underline;
+}
+
 .actual {
     border-bottom: 2px solid var(--palette-D);
 }
@@ -125,8 +129,6 @@ header {
 .main-info, .main-nav>nav {
     gap: 10%;
 }
-
-
 
 .graphic-nav-item :hover, .user-img:hover, .triple-line-menu:hover, .header-alert>div>div:hover, .graphic-nav-item {
     cursor: pointer;

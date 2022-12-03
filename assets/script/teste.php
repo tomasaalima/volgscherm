@@ -1,37 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <a href="teste.php?1D=true">Teste onclick</a>
-    <a href="teste.php?1M=true">Teste onclick</a>
-    <a href="teste.php?5M=true">Teste onclick</a>
-    <a href="teste.php?1A=true">Teste onclick</a>
-    <a href="teste.php?MAX=true">Teste onclick</a>
-</body>
-</html>
-
 <?php
-$teste = "NULL";
-    function test($period){
-        global $teste;
-        $teste = $period;
-    }
-    if (isset($_POST['1D'])) {
-        test("1D");
-    }else if(isset($_POST['1M'])){
-        test("1M");
-    }else if(isset($_POST['5M'])){
-        test("5M");
-    }else if(isset($_POST['1A'])){
-        test("1A");
-    }else if(isset($_POST['MAX'])){
-        test("MAX");
-    }
-    echo $teste;
-?>
 
+include_once 'db_connection.php';
+
+// QUERY para recuperar os registros do banco de dados
+$sql = "SELECT serial_impressora, data_execucao, total_impressoes, novas_impressoes FROM dados_impressora ORDER BY data_execucao DESC";
+
+// Preparar a QUERY
+$result = $connection->prepare($sql);
+
+// Executar a QUERY
+$result->execute();
+
+// Acessa o IF quando encontrar registro no banco de dados
+if(($result) and ($result->num_rows() != 0)){
+
+    // Aceitar csv ou texto 
+    header('Content-Type: text/csv; charset=utf-8');
+
+    // Nome arquivo
+    header('Content-Disposition: attachment; filename=arquivo.csv');
+
+    // Gravar no buffer
+    $resultado = fopen("php://output", 'w');
+
+    // Criar o cabeçalho do Excel - Usar a função mb_convert_encoding para converter carateres especiais
+    $header = ['serial_impressora', 'data_execuçao', 'total_impressoes', 'novas_impressoes', mb_convert_encoding('Endereço', 'ISO-8859-1', 'UTF-8')];
+
+    // Escrever o cabeçalho no arquivo
+    fputcsv($resultado, $header, ';');
+
+    ($stmt_result = $result->get_result()) or trigger_error($stmt->error, E_USER_ERROR);
+
+    // Ler os registros retornado do banco de dados
+    while($db_data = $stmt_result->fetch_assoc()){
+
+        // Escrever o conteúdo no arquivo
+        fputcsv($resultado, $db_data, ';');
+
+    }
+
+    // Fechar arquivo
+    //fclose($resultado);
+}

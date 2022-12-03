@@ -1,105 +1,15 @@
 <?php
-    include("sessionprotect.php");
-    require("db_connection.php");
-    require("systemThemeColors.php");
-
-    $systemColors = getColors();
-
-    $day = date("d");
-    $month = date("m");
-    $year = date("Y");
-    $period = "";
-    $today = $year."/".$month."/".$day;
-    $date = "";
-
-    function setPeriod($x){
-        global $period;
-        $period = $x;
-    }
-    
-    if (isset($_GET['1D'])) {
-        setPeriod("1D");
-    }else if(isset($_GET['1M'])){
-        setPeriod("1M");
-    }else if(isset($_GET['5M'])){
-        setPeriod("5M");
-    }else if(isset($_GET['1A'])){
-        setPeriod("1A");
-    }else if(isset($_GET['MAX'])){
-        setPeriod("MAX");
-    }
-
-    if($period != "MAX"){
-        switch($period){
-            case "1A":{
-                $date = ($year-1)."/".$month."/".$day;
-                break;
-            }
-            case "5M":{
-                $date = $year."/".($month-5)."/".$day;
-                break;
-            }
-            case "1M":{
-                $date = $year."/".($month-1)."/".$day;
-                break;
-            }
-            case "1D":{
-                $date = $year."/".$month."/".($day-1);
-                break;
-            }
-        }
-
-        $sql = "SELECT data_execucao, SUM(novas_impressoes), COUNT(DISTINCT serial_impressora) FROM dados_impressora WHERE data_execucao BETWEEN '$date' and '$today' GROUP BY data_execucao ORDER BY data_execucao ASC";
-        $result = $connection->query($sql) or die("Falha na execução do código SQL") . $connection->error;
-
-    }else{
-        $sql = "SELECT data_execucao, SUM(novas_impressoes), COUNT(DISTINCT serial_impressora) FROM dados_impressora GROUP BY data_execucao ORDER BY data_execucao ASC";
-        $result = $connection->query($sql) or die("Falha na execução do código SQL") . $connection->error;
-    }
-    
-    $generalDataArray = [];
-
-    while($db_data = mysqli_fetch_assoc($result)){
-        $value = "'".$db_data['data_execucao']."',".$db_data['SUM(novas_impressoes)'].",".$db_data['COUNT(DISTINCT serial_impressora)'];
-        array_push($generalDataArray, $value);
-    }
-
-    $printerImpressionsArray = getImpressionsByPrinter();
-
-    function getImpressionsByPrinter(){
-        $array = [];
-
-        $sql = "SELECT i.nome, di.serial_impressora, SUM(di.novas_impressoes) FROM impressora i, dados_impressora di WHERE i.serial = di.serial_impressora GROUP BY di.serial_impressora ORDER BY di.novas_impressoes DESC";
-        global $connection;
-        $result = $connection->query($sql) or die("Falha na execução do código SQL") . $connection->error;
-
-        while($db_data = mysqli_fetch_assoc($result)){
-            $value = "'".$db_data['nome']."',".$db_data['SUM(di.novas_impressoes)'];
-            array_push($array, $value);
-        }
-
-        return $array;
-    }
-    
-    $sectorImpressionsArray = getImpressionsBySector();
-
-    function getImpressionsBySector(){
-        $array = [];
-
-        global $date, $today, $connection;
-
-        $sql = "SELECT i.setor, di.data_execucao, SUM(di.novas_impressoes) FROM impressora i, dados_impressora di WHERE i.serial = di.serial_impressora AND di.data_execucao BETWEEN '$date' and '$today'  GROUP BY i.setor";
-
-        $result = $connection->query($sql) or die("Falha na execução do código SQL") . $connection->error;
-
-        while($db_data = mysqli_fetch_assoc($result)){
-            $value = "'".$db_data['setor']."',".$db_data['SUM(di.novas_impressoes)'];
-            array_push($array, $value);
-        }
-
-        return $array;
-    }
+    require('dashboardHome_control.php');
 ?>
+
+<!--Aplica as cores do tema ao sistema-->
+<script>
+    document.documentElement.style.setProperty('--palette-A', '<?php echo $systemColors[0];?>');
+    document.documentElement.style.setProperty('--palette-B', '<?php echo $systemColors[1];?>');
+    document.documentElement.style.setProperty('--palette-C', '<?php echo $systemColors[2];?>');
+    document.documentElement.style.setProperty('--palette-D', '<?php echo $systemColors[3];?>');
+</script>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -107,6 +17,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="dashboard, html, charts, impressoras">
 
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/home.css">
@@ -118,6 +29,10 @@
             justify-content: center;
             gap: 50px;
         }
+        .actual-period {
+            border-bottom: 1px solid var(--palette-D) ;
+        }
+        
     </style>
 
     <title>volgscherm</title>
@@ -134,7 +49,7 @@
             var data = new google.visualization.DataTable();
             data.addColumn('string', 'data');
             data.addColumn('number', 'Nº de Impressoes Realizadas');
-            data.addColumn('number', 'Nº de Impressoras Utilizadas no dia');
+            data.addColumn('number', 'Nº de Impressoras Utilizadas');
 
             data.addRows([
                 
@@ -293,21 +208,28 @@
         </div>
         <div class="main-dashboard">
             <nav class="period-nav">
-                <a href="dashboardHome.php?1D=true">1D</a>
-                <a href="dashboardHome.php?1M=true">1M</a>
-                <a href="dashboardHome.php?5M=true">5M</a>
-                <a href="dashboardHome.php?1A=true">1A</a>
-                <a href="dashboardHome.php?MAX=true">MAX</a>
+                <a id="1D" href="dashboardHome.php?1D=true">1D</a>
+                <a id="1M" href="dashboardHome.php?1M=true">1M</a>
+                <a id="5M" href="dashboardHome.php?5M=true">5M</a>
+                <a id="1A" href="dashboardHome.php?1A=true">1A</a>
+                <a id="MAX" href="dashboardHome.php?MAX=true">MAX</a>
             </nav>
             <div id="line-chart" style="width: 100%; height: 500px;"></div>
             <div id="bar-chart" style="width: 100%; height: 500px;"></div>
             <div id="pie-chart" style="width: 50%; height: 500px; margin: auto;"></div>
 
+            <script>
+                setBottonBorder('<?php echo $period;?>');
+                function setBottonBorder(id){
+                    document.getElementById(id).style.borderBottom = "2px solid var(--palette-D)";
+                }
+            </script>
+            <div class="printer-btns">
+                <p><a href="csvExport.php" class="report-btn">Exportar Relatório</a></p>
+            </div>
 
         </div>
-        <div class="printer-btns">
-            <button class="printer-btn">Exportar Relatórios</button>
-        </div>
+        
         <div class="historic">
             <h1>HISTÓRICO</h1>
         </div>
