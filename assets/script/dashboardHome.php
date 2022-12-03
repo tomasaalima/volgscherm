@@ -2,7 +2,7 @@
     require('dashboardHome_control.php');
 ?>
 
-<!--Aplica as cores do tema ao sistema-->
+<!--Aplicação das cores de tema ao sistema-->
 <script>
     document.documentElement.style.setProperty('--palette-A', '<?php echo $systemColors[0];?>');
     document.documentElement.style.setProperty('--palette-B', '<?php echo $systemColors[1];?>');
@@ -10,18 +10,16 @@
     document.documentElement.style.setProperty('--palette-D', '<?php echo $systemColors[3];?>');
 </script>
 
-<!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="dashboard, html, charts, impressoras">
-
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/home.css">
 
+    <!--Elementos que apresentaram mal funcionamento com caminhos relativos ao css-->
     <style>
         .period-nav {
             display: flex;
@@ -32,11 +30,11 @@
         .actual-period {
             border-bottom: 1px solid var(--palette-D) ;
         }
-        
     </style>
 
     <title>volgscherm</title>
-
+    
+    <!--API do google, Gráfico de linhas-->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
         google.charts.load('current', {
@@ -52,42 +50,39 @@
             data.addColumn('number', 'Nº de Impressoras Utilizadas');
 
             data.addRows([
-                
                 <?php
-                    foreach($generalDataArray as $value){
+                    foreach($generalDataArray as $value){//Inserção de valores em forma de Array via PHP
                         echo "[".$value."],";
                     }
-                ?>
-                
+                ?> 
             ]);
 
             var options = {
                 legend: {
                     textStyle:{
-                        color:'<?php echo $systemColors[3];?>'
+                        
+                        color:'<?php echo $systemColors[3];?>'//Inserção das cores do sistema via PHP
                     }
                 },
                 vAxis: {
                     title: 'Tabela Geral de Impressoras',
                     textStyle:{
-                        color: '<?php echo $systemColors[3];?>'
+                        color: '<?php echo $systemColors[3];?>'//Inserção das cores do sistema via PHP
                     },
                     titleTextStyle: {
-                    color: '<?php echo $systemColors[3];?>'
+                    color: '<?php echo $systemColors[3];?>'//Inserção das cores do sistema via PHP
                     }
                 },
                 hAxis:{
                     textStyle:{
-                        color: '<?php echo $systemColors[3];?>'
+                        color: '<?php echo $systemColors[3];?>'//Inserção das cores do sistema via PHP
                     }
                 },
                 series: {
-                    0: { color: '<?php echo $systemColors[3];?>' }
+                    0: { color: '<?php echo $systemColors[3];?>' }//Inserção das cores do sistema via PHP
                 },
                 lineWidth: 5,
-                backgroundColor: 'transparent'
-                
-                
+                backgroundColor: 'transparent'  
             };
 
             var chart = new google.visualization.LineChart(document.getElementById('line-chart'));
@@ -95,6 +90,8 @@
             chart.draw(data, options);
         }
     </script>
+    
+    <!--API do google, Gráfico de colunas-->
     <script>
         google.charts.load('current', {
             packages: ['corechart', 'bar']
@@ -109,7 +106,7 @@
 
             data.addRows([
                 <?php
-                    foreach($printerImpressionsArray as $value){
+                    foreach($printerImpressionsArray as $value){//Inserção de valores em forma de Array via PHP
                         echo "[".$value."],";
                     }
                 ?>
@@ -119,19 +116,21 @@
                 vAxis: {
                     title: 'Tabela de Impressões por Impressora',
                     textStyle:{
-                        color: '<?php echo $systemColors[3];?>'
+                        color: '<?php echo $systemColors[3];?>'//Inserção das cores do sistema via PHP
                     },
                     titleTextStyle: {
-                    color: '<?php echo $systemColors[3];?>'
+                    color: '<?php echo $systemColors[3];?>'//Inserção das cores do sistema via PHP
                     }
                 },legend: 'none',
                 hAxis:{
                     textStyle:{
-                        color: '<?php echo $systemColors[3];?>'
+                        color: '<?php echo $systemColors[3];?>'//Inserção das cores do sistema via PHP
                     }
                 },
                 series: {
-                    0: { color: '<?php echo $systemColors[3];?>' }
+                    0: {
+                        color: '<?php echo $systemColors[3];?>'//Inserção das cores do sistema via PHP
+                     }
                 },
                 backgroundColor: 'transparent'
             };
@@ -142,6 +141,8 @@
             chart.draw(data, options);
         }
     </script>
+    
+    <!--API do google, Gráfico em formato de Pizza-->
     <script>
         google.charts.load("current", {
             packages: ["corechart"]
@@ -155,7 +156,7 @@
                 if($sectorImpressionsArray == null){
                     echo "['Ausência de Valores nesse período', 1]";
                 }else{
-                    foreach($sectorImpressionsArray as $value){
+                    foreach($sectorImpressionsArray as $value){//Inserção de valores em forma de Array via PHP
                         echo "[".$value."],";
                     }
                 }
@@ -165,13 +166,13 @@
             var options = {
                 title: 'Agrupamento por Setor no Período (<?php echo ($date == null)? "Todo o Período": $date." à ".$today ?>)',
                 titleTextStyle:{
-                    color: '<?php echo $systemColors[3];?>'
+                    color: '<?php echo $systemColors[3];?>'//Inserção das cores do sistema via PHP
                 },
                 is3D: true,
                 backgroundColor: 'transparent',
                 legend: {
                     textStyle:{
-                        color: '<?php echo $systemColors[3];?>'
+                        color: '<?php echo $systemColors[3];?>'//Inserção das cores do sistema via PHP
                     }
                 }
 
@@ -185,7 +186,7 @@
 
 <body>
     <?php
-    require('headerBlock.php');
+        require('headerBlock.php');//invocação do header da página 
     ?>
     <main>
         <div class="main-nav">
@@ -214,11 +215,14 @@
                 <a id="1A" href="dashboardHome.php?1A=true">1A</a>
                 <a id="MAX" href="dashboardHome.php?MAX=true">MAX</a>
             </nav>
+
+            <!--Chamado aos gráficos charts-->
             <div id="line-chart" style="width: 100%; height: 500px;"></div>
             <div id="bar-chart" style="width: 100%; height: 500px;"></div>
             <div id="pie-chart" style="width: 50%; height: 500px; margin: auto;"></div>
 
             <script>
+                /*Aplica bordar em baixo no periodo selecionado*/
                 setBottonBorder('<?php echo $period;?>');
                 function setBottonBorder(id){
                     document.getElementById(id).style.borderBottom = "2px solid var(--palette-D)";
@@ -232,6 +236,9 @@
         
         <div class="historic">
             <h1>HISTÓRICO</h1>
+            <?php 
+                require('historicBlock.php');
+            ?>
         </div>
     </main>
 

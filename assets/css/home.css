@@ -111,6 +111,16 @@ header {
     margin-top: 10px;
 }
 
+.historic-table, th, td{
+    border: 1px solid var(--palette-D);
+    text-align: center;
+    border-collapse: collapse;
+    padding: 10px 0px 10px 0px;
+}
+.historic-table {
+    width: 100%;
+}
+
 .graphic-nav-item {
     border: none;
     background-color: transparent;
