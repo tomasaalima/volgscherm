@@ -15,11 +15,6 @@ header {
     width: var(--header-div-width);
 }
 
-.header-logo>img {
-    max-height: 50px;
-    object-fit: cover;
-}
-
 .header-alert {
     width: 100%;
     gap: 20px;
@@ -62,16 +57,12 @@ header {
     background-color: var(--palette-D);
 }
 
-.triple-line-menu>div {
-    background-color: var(--palette-D);
-    width: 30px;
-    height: 2px;
-    border-radius: 10px;
-}
-
 .triple-line-menu {
     padding-right: 15px;
-    gap: 4px;
+}
+
+#burguer{
+    cursor: pointer;
 }
 
 .main-dashboard, .main-info, .historic, .main-slots {

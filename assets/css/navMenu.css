@@ -1,0 +1,34 @@
+menu{
+    display: none;
+}
+ul{
+    list-style-type: none;
+    text-align: end;
+}
+li{
+    float: left;
+    width: 150px;
+}
+li a {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+    }
+
+li a:hover {
+background-color: #111111;
+}
+
+body{
+    overflow-x: hidden;
+}
+
+#menu-nav{
+    height: 65px;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    background-color: var(--palette-B);
+}

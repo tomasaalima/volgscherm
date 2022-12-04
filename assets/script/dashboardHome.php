@@ -18,6 +18,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/navMenu.css">
+    
+    <!--Recurso google para biblioteca de ícones-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 
     <!--Elementos que apresentaram mal funcionamento com caminhos relativos ao css-->
     <style>
@@ -34,6 +38,7 @@
 
     <title>volgscherm</title>
 
+    <!--Recurso google para biblioteca de charts-->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
     <!--API do google, Gráfico de linhas-->

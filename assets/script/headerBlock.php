@@ -1,6 +1,5 @@
 <header>
     <div class='header-logo'>
-        <img src='uploads/logo-exemple.png' alt='logo da empresa'>
     </div>
     <div class='header-alert'>
         <div>
@@ -42,9 +41,37 @@
             <hr>
         </div>
         <div class='triple-line-menu'>
-            <div></div>
-            <div></div>
-            <div></div>
+        <i id="burguer" class="material-symbols-outlined" onclick="openMenu()">menu</i>
+        <script>
+            function openMenu(){
+                if(menu.style.display == 'block'){
+                    document.getElementById('burguer').innerHTML= 'menu';
+                    menu.style.display = 'none';
+                }else{
+                    document.getElementById('burguer').innerHTML= 'close';
+                    menu.style.display = 'block';
+                }
+            }
+        </script>
         </div>
+        
     </div>
 </header>
+<nav id="menu-nav">
+        <menu id="menu">
+            <ul>
+                <li>
+                    <a href="systemEdit.php">
+                    <i class="material-symbols-outlined">settings</i>
+                    Configurações 
+                    </a>
+                </li>
+                <li>
+                    <a href="userLogout.php">
+                    <i class="material-symbols-outlined">logout</i>
+                    Logout 
+                    </a>
+                </li>
+            </ul>
+        </menu>
+</nav>

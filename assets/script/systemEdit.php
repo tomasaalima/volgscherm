@@ -1,10 +1,6 @@
 <?php
-require('headerBlock.php');
-
-
-include_once('upload.php');
-uploadFileUser();
-uploadFileLogo();
+    require('sessionProtect.php');
+    include_once('userUpload.php');
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +13,11 @@ uploadFileLogo();
 
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/home.css">
-    <link rel="stylesheet" href="../css/config.css">
+    <link rel="stylesheet" href="../css/sysEdit.css">
+    <link rel="stylesheet" href="../css/navMenu.css">
+
+    <!--Recurso google para biblioteca de ícones-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 
     <title>volgscherm</title>
 
@@ -25,9 +25,13 @@ uploadFileLogo();
 
 <body>
 
+    <?php
+        require('headerBlock.php');
+    ?>
+
     <main>
         <div class="config-container">
-            <ul>
+            <ul class="unordered-element">
                 <div class="config-topics actual-atribute">
                     <li class="li-topic">Personalização</li>
                 </div>
@@ -49,27 +53,6 @@ uploadFileLogo();
                             <input style="cursor: pointer;" type="submit" value="Aplicar" name="action-i" class="apply-btn">
                         </form>
                     </div>
-                </div>
-                <div class="logo-edit">
-                    <div>
-                        <img type="file" class="user-logo" src="uploads/logo-exemple.png" alt="logo do usuário">
-                    </div>
-
-
-
-
-
-                    <div class="choose-file">
-                        Mudar Logo (Recomendado: 600x300)
-                        <form action="#" method="post" enctype="multipart/form-data">
-                            <input type="file" name="arquive-ii">
-                            <input style="cursor: pointer;" type="submit" value="Aplicar" name="action-ii" class="apply-btn">
-                        </form>
-                    </div>
-
-
-
-
                 </div>
                 <div class="theme-edit">
                     <div>
