@@ -56,7 +56,7 @@ if (isset($_POST['user-name']) || isset($_POST['password']) || isset($_POST['rep
     <link rel="stylesheet" href="../css/form.css">
     <link rel="stylesheet" href="../css/registration.css">
 
-    <title>volgscherm</title>
+    <title>Mudança de Senha</title>
 
 </head>
 

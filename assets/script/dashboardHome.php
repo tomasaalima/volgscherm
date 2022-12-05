@@ -43,7 +43,7 @@
         }
     </style>
 
-    <title>volgscherm</title>
+    <title>volgscherm - Painel Princípal</title>
 
     <!--Recurso google para biblioteca de charts-->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>

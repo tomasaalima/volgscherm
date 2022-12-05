@@ -55,7 +55,7 @@ if (isset($_POST['user-name']) || isset($_POST['password']) || isset($_POST['rep
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/form.css">
 
-    <title>volgscherm</title>
+    <title>Cadastro</title>
 
 </head>
 

@@ -50,7 +50,7 @@
             display: none;
         }
         </style>
-    <title>volgscherm</title>
+    <title>volgscherm - Painel de Impressoras</title>
 
 </head>
 
