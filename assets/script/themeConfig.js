@@ -1,9 +1,11 @@
-  
+    
+    //aplica as cores para o tema selecionado
     function setTheme(id) {
 
         let theme = document.getElementById(id);
         theme.classList.add("actual-theme");
     
+        //Muda as cores no css de acordo com o tema
         switch (id) {
             case '01': {
                 document.documentElement.style.setProperty('--palette-A', '#1D1E26');

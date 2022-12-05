@@ -1,9 +1,17 @@
 <?php
+    //Invoca arquivo que protege a sessão, evitando acesso sem log-in
     require('sessionProtect.php');
+
+    //Invoca arquivo responsável pelo recebimento de arquivos 
     include('userUpload.php');
+
+    //Invoca arquivo que realiza a conexão com o banco de dados
     require('db_connection.php');
+
+    //invoca arquivo para trabalhar com os temas do sistema e suas respectivas cores
     require("systemThemeColors.php");
 
+    //Pega o tema definido gravando-o no banco de dados
     if(isset($_GET['dark'])){
         $connection->query("UPDATE sistema SET tema = 'dark' ");
     }else if(isset($_GET['light'])){
@@ -15,6 +23,7 @@
     /*Consulta qual o tema no banco de dados e obtem um Array[4] contendo as cores respectivas ao mesmo */
     $systemColors = getColors();
 
+    //Invoca função responsável pelo recebimento dos arquivos
     uploadFileUser();
 ?>
 
@@ -54,6 +63,8 @@
     ?>
     
     <main>
+        
+        <!--Bloco de opções-->
         <div class="config-container">
             <ul class="unordered-element">
                 <div class="config-topics actual-atribute">
@@ -72,11 +83,17 @@
                     </a>
                 </div>
             </ul>
+
+            <!--Bloco de informações respectivas a opção selecionada-->
             <article>
                 <div class="img-edit">
+
+                    <!--Imagem do usuário-->
                     <div>
                         <img class="user-img-edit" src="uploads/user-img.jpg" alt="imagem do usuário">
                     </div>
+
+                    <!--Formulário de upload-->
                     <div class="choose-file">
                         Mudar Imagem de Usuário
                         <form action="#" method="post" enctype="multipart/form-data">
@@ -85,10 +102,14 @@
                         </form>
                     </div>
                 </div>
+
+                <!--Seleção de tema-->
                 <div class="theme-edit">
                     <div>
                         <a href="systemEdit.php?dark=true">
                             <div id="01" class="themes link">
+
+                                    <!--Tema Dark-->
                                     <button class="theme-btn" onclick="setTheme('01')">
                                         <div class="dark-theme">
                                             <div style="background-color: #1D1E26;" class="theme-color"></div>
@@ -102,6 +123,8 @@
                         </a>
                         <a href="systemEdit.php?light=true">
                             <div id="02" class="themes link">
+
+                                <!--Tema Light-->
                                 <button class="theme-btn" onclick="setTheme('02')">
                                     <div class="light-theme">
                                         <div style="background-color: #ffffff;" class="theme-color"></div>
@@ -116,6 +139,8 @@
                         </a>
                         <a href="systemEdit.php?tech=true">
                             <div id="03" class="themes link">
+
+                                <!--Tema Tech-->
                                 <button class="theme-btn" onclick="setTheme('03')">
                                     <div class="tech-theme">
                                         <div style="background-color: #224D59;" class="theme-color"></div>

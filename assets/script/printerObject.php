@@ -1,9 +1,11 @@
 <?php
-    include('db_connection.php');
+    //Invoca arquivo que realiza a conexão com o banco de dados
+    require('db_connection.php');
 
     $sql = "SELECT serial, nome, endereco_ip, data_reconhecimento, modelo, setor FROM impressora";
     $result = $connection->query($sql) or die("Falha na execução do código SQL") . $connection->error;
 
+    //Bloco de impressoras em forma de tabela
     while($db_data = mysqli_fetch_assoc($result)){
         echo "<table class='printer-object'>
         <thead>

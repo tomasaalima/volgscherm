@@ -1,9 +1,11 @@
 <?php
-    include('db_connection.php');
+    //Invoca arquivo que realiza a conexão com o banco de dados
+    require('db_connection.php');
 
     $sql = "SELECT id, serial_impressora, data_execucao, novas_impressoes FROM dados_impressora ORDER BY data_execucao DESC LIMIT 50";
     $result = $connection->query($sql) or die("Falha na execução do código SQL") . $connection->error;
 
+    //Cria tabela
     echo "<table class='historic-table'>
             <thead>
                 <tr>
@@ -16,6 +18,7 @@
             <tbody>
     ";
 
+    //Escreve uma nova linha com os dados obtidos no banco de dados
     while($db_data = mysqli_fetch_assoc($result)){
         echo "<tr>
                 <td title='Chave identificadora da captura'>".$db_data['id']."</td>

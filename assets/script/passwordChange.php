@@ -1,9 +1,13 @@
 <?php
-include_once("db_connection.php");
+//Invoca arquivo que realiza a conexão com o banco de dados
+require("db_connection.php");
+
+//invoca arquivo contendo dados sobre a chave do produto
 include_once("systemKey.php");
 
 if (isset($_POST['user-name']) || isset($_POST['password']) || isset($_POST['repeat-password']) || isset($_POST['key'])) {
 
+    //verifica o preenchimento dos campos
     if (strlen($_POST['user-name'] == "")) {
         echo "Preencha o nome de usuário";
     } else if (strlen($_POST['password'] == "")) {
@@ -13,6 +17,8 @@ if (isset($_POST['user-name']) || isset($_POST['password']) || isset($_POST['rep
     } else if (strlen($_POST['key'] == "")) {
         echo "Informe a chave do produto";
     } else {
+
+        //Trata os campos de entrada de texto
         $user = $connection->real_escape_string($_POST['user-name']);
         $password = $connection->real_escape_string($_POST['password']);
         $repeat_password = $connection->real_escape_string($_POST['repeat-password']);
@@ -23,6 +29,7 @@ if (isset($_POST['user-name']) || isset($_POST['password']) || isset($_POST['rep
 
         $quantidade = $result->num_rows;
 
+        //Verifica a existência do usuário no banco de dados
         if ($quantidade == 0) {
             echo "Esse usuário não existe";
         } else if ($password != $repeat_password) {
@@ -60,6 +67,8 @@ if (isset($_POST['user-name']) || isset($_POST['password']) || isset($_POST['rep
             <hr class="line">
         </div>
         <div class="container-formulary">
+
+            <!--Formulário de inserção de dados-->
             <form id="form" class="formulary" action="" method="post">
                 <label class="label-formulary" for="name">Usuário</label>
                 <input class="input-formulary" type="text" name="user-name">
@@ -70,10 +79,14 @@ if (isset($_POST['user-name']) || isset($_POST['password']) || isset($_POST['rep
                 <label class="label-formulary" for="user">Chave do Produto</label>
                 <input class="input-formulary" type="text" name="key">
                 <div class="sub-elements">
+
+                    <!--redirecionamento para página de informações sobre a chave do produto-->
                     <a href="keyGuide.php">Resgatar Chave de Acesso</a>
                 </div>
                 <div class="form-btns">
                     <a class="submit-btn" href="../../index.php">
+
+                        <!--Botão de retorno-->
                         <input class="toback" type="button" value="Voltar">
                     </a>
                     <input class="submit-btn" type="submit" value="Redefinir">

@@ -1,6 +1,8 @@
 <?php
-    include('db_connection.php');
+    //Invoca arquivo que realiza a conexão com o banco de dados
+    require('db_connection.php');
 
+    //Arrays contendo Números Seriais das impressoras com os respectivos status(0,1,2,3)
     $sts0 = [];
     $sts1 = [];
     $sts2 = [];
@@ -9,8 +11,10 @@
 
     $result = $connection->query("SELECT serial, status FROM impressora") or die("Falha na execução do código SQL") . $connection->error;
 
+    //Levanta o status de cada impressora
     while($db_data = mysqli_fetch_assoc($result)){
-
+        
+        //Atribui o número serial ao respectivo array
         switch($db_data['status']){
             case '0':{
                 array_push($sts0, $db_data['serial']);
@@ -33,10 +37,13 @@
 
 ?>
 
+<!--Bloco de cabeçalho ultilizado em multiplas páginas-->
 <header>
     <div class='header-logo'>
         <a href="dashboardHome.php"><i id="back-icon" class="material-symbols-outlined">arrow_back</i></a>
     </div>
+
+    <!--badges de alertas-->
     <div class='header-alert'>
         <div>
             <div title="Dispositivos com Problemas" style='background-color: rgba(255, 0, 0, 0.7);'>
@@ -63,6 +70,8 @@
             </div>
         </div>
     </div>
+
+    <!--Imagem do usuário e menu hamburguer-->
     <div class='header-user'>
         <div class='user-image'>
             <img class='user-img' src='uploads/user-img.jpg' alt='imagem do usuário'>
@@ -87,6 +96,8 @@
         
     </div>
 </header>
+
+<!--Navegação do menu Hamburguer-->
 <nav id="menu-nav">
         <menu id="menu">
             <ul>

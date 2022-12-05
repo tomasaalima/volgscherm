@@ -3,11 +3,13 @@
 // Limpar o buffer
 ob_start();
 
+//Invoca arquivo em que existem as variáveis correspondentee as datas
 require('dashboardHome_control.php');
 
-// Incluir a conexão com BD
+//Invoca arquivo que realiza a conexão com o banco de dados
 include_once 'pdo_connection.php';
 
+//Verifica se foi definido um periodo específico na busca
 if($period != "MAX"){
     generateCSV("SELECT data_execucao, SUM(novas_impressoes), COUNT(DISTINCT serial_impressora) FROM dados_impressora WHERE data_execucao BETWEEN '$date' and '$today' GROUP BY data_execucao ORDER BY data_execucao ASC");
 

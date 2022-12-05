@@ -1,5 +1,8 @@
 <?php
+    //Invoca arquivo com as principais funções do painel dos gráficos
     require('dashboardHome_control.php');
+
+    //Invoca arquivo que protege a sessão, evitando acesso sem log-in
     require('sessionProtect.php');
 ?>
 

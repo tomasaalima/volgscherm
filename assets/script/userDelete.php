@@ -1,15 +1,25 @@
 <?php
+    //Invoca arquivo que protege a sessão, evitando acesso sem log-in
     require('sessionProtect.php');
+    
+    //Invoca arquivo que realiza a conexão com o banco de dados
     require('db_connection.php');
+
+    //invoca arquivo para trabalhar com os temas do sistema e suas respectivas cores
     require('systemThemeColors.php');
+
+    //invoca arquivo contendo dados sobre a chave do produto
     require('systemKey.php');
 
+    //Verifica correspondência da chave do produto
     if(isset($_POST['productKey'])){
         $key = $_POST['productKey'];
         
         if($key != $product_key){
             echo "A chave inserida não é válida";
         }else{
+
+            //Deleta o usuário atual
             $user = $_SESSION['user'];
             $connection->query("DELETE FROM administrador WHERE usuario = '$user'");
             header('Location: userLogout.php');
@@ -71,6 +81,8 @@
     ?>
     
     <main>
+
+        <!--Bloco de opções-->
         <div class="config-container">
             <ul class="unordered-element">
                 <div class="config-topics">
@@ -89,13 +101,19 @@
                     </a>
                 </div>
             </ul>
+
+            <!--Bloco de informações respectivas a opção selecionada-->
             <article>
+
+                <!--Formulário para remoção do usuário(inserção de chave do produto)-->
                 <form action="" method="post">
                     <p>Se deletar essa conta será direcionado a tela de login e não poderá mais iniciar sessão com os dados da mesma.</p>
                     <div>
                         <label for="productKey">Chave do Produto</label>
                         <input type="text" name="productKey">
                     </div>
+                    
+                    <!--Botão de confirmação-->
                     <div><input type="submit" value="Deletar Minha Conta"></div>
                 </form>
             </article>

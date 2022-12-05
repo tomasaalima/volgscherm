@@ -1,6 +1,11 @@
 <?php
+    //Invoca arquivo que protege a sessão, evitando acesso sem log-in
     require('sessionProtect.php');
+
+    //Invoca arquivo que realiza a conexão com o banco de dados
     require('db_connection.php');
+
+    //invoca arquivo para trabalhar com os temas do sistema e suas respectivas cores
     require("systemThemeColors.php");
 
 
@@ -75,18 +80,23 @@
                     </a>
                 </div>
             </ul>
+
+            <!--Informações-->
             <article>
                 <p>
+                    <!--Redirecionamento Github-->
                     O projeto <strong>Volgscherm</strong> está em constante desenvolvimento e é disponibilizado remotamente no <a target="_blank" href="https://github.com/tomasaalima/volgscherm"><strong>GitHub.</strong></a>
                 </p>
                 <p>
+                    <!--Redirecionamento para envio de e-mail-->
                     Para sugestões ou reportar bugs você poderá entrar em contado pelo email: <a target="_blank" href="mailto:taal@discente.ifpe.edu.br"><strong>taal@discente.ifpe.edu.br.</strong></a>
                 </p>
                 <p>
                     Para mais informações consultar a documentação do sistema.
                 </p>
+                <!--imagem volgscherm-->
                 <picture>
-                    <img src="../img/logo.png" alt="">
+                    <img src="../img/logo.png" alt="logo volgscherm">
                 </picture>
             </article>
         </div>

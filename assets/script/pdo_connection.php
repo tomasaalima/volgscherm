@@ -1,9 +1,15 @@
 <?php
 
-//Inicio da conexão com o banco de dados utilizando PDO
+//Onde está hospedado o banco de dados
 $host = "localhost";
+
+//Nome do proprietário do banco de dados
 $user = "root";
+
+//Senha do proprietário
 $pass = "root";
+
+//Nome do banco de dados
 $dbname = "volgscherm";
 
 try {

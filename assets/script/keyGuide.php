@@ -44,6 +44,7 @@
 <body>
     <article>
         <div>
+            <!--Informações sobre a chave do produto-->
             <h1>O que é a Chave de Produto?</h1>
             <div>
                 <p>
@@ -59,6 +60,7 @@
         </div>
         <div class="form-btns">
             <a href="../../index.php">
+                <!--Botão para retorno-->
                 <input class="submit-btn" class="toback" type="button" value="Voltar">
             </a>
         </div>

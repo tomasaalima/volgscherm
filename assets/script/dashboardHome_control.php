@@ -1,6 +1,11 @@
 <?php
+    //Invoca arquivo que protege a sessão, evitando acesso sem log-in
     include("sessionprotect.php");
+
+    //Invoca arquivo que realiza a conexão com o banco de dados
     require("db_connection.php");
+
+    //invoca arquivo para trabalhar com os temas do sistema e suas respectivas cores
     require("systemThemeColors.php");
 
     /*Consulta qual o tema no banco de dados e obtem um Array[4] contendo as cores respectivas ao mesmo */
@@ -110,6 +115,7 @@
 
         $result = $connection->query($sql) or die("Falha na execução do código SQL") . $connection->error;
 
+        //Percorre resultados
         while($db_data = mysqli_fetch_assoc($result)){
             $value = "'".$db_data['setor']."',".$db_data['SUM(di.novas_impressoes)'];
             array_push($array, $value);

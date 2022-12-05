@@ -1,5 +1,7 @@
 <?php
+    //invoca arquivo para trabalhar com os temas do sistema e suas respectivas cores
     require("systemThemeColors.php");
+
     /*Consulta qual o tema no banco de dados e obtem um Array[4] contendo as cores respectivas ao mesmo */
     $systemColors = getColors();
 ?>
@@ -54,16 +56,20 @@
 
 <body>
     <?php
-    include_once('headerBlock.php');
+    include_once('headerBlock.php');//invocação do header da página 
     ?>
     <main>
         <div class="main-nav">
             <nav>
+
+                <!--Menu de navegação painel principal / painel de impressoras-->
                 <a href="dashboardHome.php">DashBoard</a>
                 <a href="#" class="actual">Impressoras</a>
             </nav>
         </div>
         <div class="main-slots">
+
+            <!--Barra de busca-->
             <div class="search-bar">
                 <form action="" method="post">
                     <input type="text" placeholder="Search..">
@@ -73,9 +79,11 @@
                 </form>
                 
             </div>
+
+            <!--Bloco das impressoras-->
             <div class="objects-container">
                 <?php
-                    include('printerObject.php');
+                    include('printerObject.php');//Invocação do arquivo gerador das tabelas(impressoras)
                 ?>
             </div>
         </div>
