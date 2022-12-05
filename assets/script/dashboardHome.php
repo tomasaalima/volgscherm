@@ -265,9 +265,9 @@
             <!--Links de downloads-->
             <div class="printer-btns">
                 <p title="Realizar download de arquivo em formato de planilha">Exportar Relatórios:</p>
-                <p title="Planilha com o número de impressões diárias, junto ao número de impressoras ultilizadas"><a href="csvExportOne.php" class="report-btn">Tabela Geral(impressões/data)</a></p>
-                <p title="Planilha com o total de impressões de cada impressora"><a href="csvExportTwo.php" class="report-btn">Tabela Impressoras(impressões/impressora)</a></p>
-                <p title="Planilha com o total de impressões por setor"><a href="csvExportThree.php" class="report-btn">Tabela Setores(impressões/setor)</a></p>
+                <p title="Planilha com o número de impressões diárias, junto ao número de impressoras ultilizadas"><a href="csvExportOne.php" class="report-btn">Tabela Geral</a></p>
+                <p title="Planilha com o total de impressões de cada impressora"><a href="csvExportTwo.php" class="report-btn">Tabela Impressoras</a></p>
+                <p title="Planilha com o total de impressões por setor"><a href="csvExportThree.php" class="report-btn">Tabela Setores</a></p>
             </div>
 
         </div>
