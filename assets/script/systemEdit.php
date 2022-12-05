@@ -1,38 +1,38 @@
 <?php
-    //Invoca arquivo que protege a sessão, evitando acesso sem log-in
-    require('sessionProtect.php');
+//Invoca arquivo que protege a sessão, evitando acesso sem log-in
+require('sessionProtect.php');
 
-    //Invoca arquivo responsável pelo recebimento de arquivos 
-    include('userUpload.php');
+//Invoca arquivo responsável pelo recebimento de arquivos 
+include('userUpload.php');
 
-    //Invoca arquivo que realiza a conexão com o banco de dados
-    require('db_connection.php');
+//Invoca arquivo que realiza a conexão com o banco de dados
+require('db_connection.php');
 
-    //invoca arquivo para trabalhar com os temas do sistema e suas respectivas cores
-    require("systemThemeColors.php");
+//invoca arquivo para trabalhar com os temas do sistema e suas respectivas cores
+require("systemThemeColors.php");
 
-    //Pega o tema definido gravando-o no banco de dados
-    if(isset($_GET['dark'])){
-        $connection->query("UPDATE sistema SET tema = 'dark' ");
-    }else if(isset($_GET['light'])){
-        $connection->query("UPDATE sistema SET tema = 'light' ");
-    }else if(isset($_GET['tech'])){
-        $connection->query("UPDATE sistema SET tema = 'tech' ");
-    }
+//Pega o tema definido gravando-o no banco de dados
+if (isset($_GET['dark'])) {
+    $connection->query("UPDATE sistema SET tema = 'dark' ");
+} else if (isset($_GET['light'])) {
+    $connection->query("UPDATE sistema SET tema = 'light' ");
+} else if (isset($_GET['tech'])) {
+    $connection->query("UPDATE sistema SET tema = 'tech' ");
+}
 
-    /*Consulta qual o tema no banco de dados e obtem um Array[4] contendo as cores respectivas ao mesmo */
-    $systemColors = getColors();
+/*Consulta qual o tema no banco de dados e obtem um Array[4] contendo as cores respectivas ao mesmo */
+$systemColors = getColors();
 
-    //Invoca função responsável pelo recebimento dos arquivos
-    uploadFileUser();
+//Invoca função responsável pelo recebimento dos arquivos
+uploadFileUser();
 ?>
 
 <!--Aplicação das cores de tema ao sistema-->
 <script>
-    document.documentElement.style.setProperty('--palette-A', '<?php echo $systemColors[0];?>');
-    document.documentElement.style.setProperty('--palette-B', '<?php echo $systemColors[1];?>');
-    document.documentElement.style.setProperty('--palette-C', '<?php echo $systemColors[2];?>');
-    document.documentElement.style.setProperty('--palette-D', '<?php echo $systemColors[3];?>');
+    document.documentElement.style.setProperty('--palette-A', '<?php echo $systemColors[0]; ?>');
+    document.documentElement.style.setProperty('--palette-B', '<?php echo $systemColors[1]; ?>');
+    document.documentElement.style.setProperty('--palette-C', '<?php echo $systemColors[2]; ?>');
+    document.documentElement.style.setProperty('--palette-D', '<?php echo $systemColors[3]; ?>');
 </script>
 
 <!DOCTYPE html>
@@ -56,14 +56,14 @@
 </head>
 
 <body>
-    
+
 
     <?php
-        require('headerBlock.php');//invocação do header da página 
+    require('headerBlock.php'); //invocação do header da página 
     ?>
-    
+
     <main>
-        
+
         <!--Bloco de opções-->
         <div class="config-container">
             <ul class="unordered-element">
@@ -109,16 +109,16 @@
                         <a href="systemEdit.php?dark=true">
                             <div title="Tema Dark" id="01" class="themes link">
 
-                                    <!--Tema Dark-->
-                                    <button class="theme-btn" onclick="setTheme('01')">
-                                        <div class="dark-theme">
-                                            <div style="background-color: #1D1E26;" class="theme-color"></div>
-                                            <div style="background-color: #202126;" class="theme-color"></div>
-                                            <div style="background-color: #737272;" class="theme-color"></div>
-                                            <div style="background-color: #889ABF;" class="theme-color"></div>
-                                        </div>
-                                        <aside>Dark</aside>
-                                    </button>
+                                <!--Tema Dark-->
+                                <button class="theme-btn" onclick="setTheme('01')">
+                                    <div class="dark-theme">
+                                        <div style="background-color: #1D1E26;" class="theme-color"></div>
+                                        <div style="background-color: #202126;" class="theme-color"></div>
+                                        <div style="background-color: #737272;" class="theme-color"></div>
+                                        <div style="background-color: #889ABF;" class="theme-color"></div>
+                                    </div>
+                                    <aside>Dark</aside>
+                                </button>
                             </div>
                         </a>
                         <a href="systemEdit.php?light=true">
@@ -158,4 +158,5 @@
         </div>
     </main>
 </body>
+
 </html>

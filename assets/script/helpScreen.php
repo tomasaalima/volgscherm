@@ -1,24 +1,24 @@
 <?php
-    //Invoca arquivo que protege a sessão, evitando acesso sem log-in
-    require('sessionProtect.php');
+//Invoca arquivo que protege a sessão, evitando acesso sem log-in
+require('sessionProtect.php');
 
-    //Invoca arquivo que realiza a conexão com o banco de dados
-    require('db_connection.php');
+//Invoca arquivo que realiza a conexão com o banco de dados
+require('db_connection.php');
 
-    //invoca arquivo para trabalhar com os temas do sistema e suas respectivas cores
-    require("systemThemeColors.php");
+//invoca arquivo para trabalhar com os temas do sistema e suas respectivas cores
+require("systemThemeColors.php");
 
 
-    /*Consulta qual o tema no banco de dados e obtem um Array[4] contendo as cores respectivas ao mesmo */
-    $systemColors = getColors();
+/*Consulta qual o tema no banco de dados e obtem um Array[4] contendo as cores respectivas ao mesmo */
+$systemColors = getColors();
 ?>
 
 <!--Aplicação das cores de tema ao sistema-->
 <script>
-    document.documentElement.style.setProperty('--palette-A', '<?php echo $systemColors[0];?>');
-    document.documentElement.style.setProperty('--palette-B', '<?php echo $systemColors[1];?>');
-    document.documentElement.style.setProperty('--palette-C', '<?php echo $systemColors[2];?>');
-    document.documentElement.style.setProperty('--palette-D', '<?php echo $systemColors[3];?>');
+    document.documentElement.style.setProperty('--palette-A', '<?php echo $systemColors[0]; ?>');
+    document.documentElement.style.setProperty('--palette-B', '<?php echo $systemColors[1]; ?>');
+    document.documentElement.style.setProperty('--palette-C', '<?php echo $systemColors[2]; ?>');
+    document.documentElement.style.setProperty('--palette-D', '<?php echo $systemColors[3]; ?>');
 </script>
 
 <!DOCTYPE html>
@@ -35,15 +35,16 @@
     <link rel="stylesheet" href="../css/navMenu.css">
 
     <style>
-        article{
+        article {
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
-        img{
-            background-color:white;
-            max-height:200px;
-            margin-top:100px;
+
+        img {
+            background-color: white;
+            max-height: 200px;
+            margin-top: 100px;
             border-radius: 10px;
         }
     </style>
@@ -58,9 +59,9 @@
 <body>
 
     <?php
-        require('headerBlock.php');//invocação do header da página 
+    require('headerBlock.php'); //invocação do header da página 
     ?>
-    
+
     <main>
         <div class="config-container">
             <ul class="unordered-element">
@@ -102,4 +103,5 @@
         </div>
     </main>
 </body>
+
 </html>

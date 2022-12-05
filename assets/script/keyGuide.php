@@ -9,12 +9,13 @@
     <link rel="stylesheet" href="../css/base.css">
 
     <style>
-        body{
+        body {
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
-        article{
+
+        article {
             display: flex;
             flex-direction: column;
             justify-content: space-around;
@@ -26,13 +27,14 @@
             padding: 0px 10px 0px 10px;
         }
 
-        article>div{
+        article>div {
             display: flex;
             flex-direction: column;
             justify-content: center;
             gap: 10px;
         }
-        .submit-btn{
+
+        .submit-btn {
             width: 50%;
         }
     </style>
@@ -65,7 +67,7 @@
             </a>
         </div>
     </article>
-    
+
 </body>
 
 </html>

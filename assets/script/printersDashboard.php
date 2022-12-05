@@ -1,19 +1,19 @@
 <?php
-    //invoca arquivo para trabalhar com os temas do sistema e suas respectivas cores
-    require("systemThemeColors.php");
+//invoca arquivo para trabalhar com os temas do sistema e suas respectivas cores
+require("systemThemeColors.php");
 
-    /*Consulta qual o tema no banco de dados e obtem um Array[4] contendo as cores respectivas ao mesmo */
-    $systemColors = getColors();
+/*Consulta qual o tema no banco de dados e obtem um Array[4] contendo as cores respectivas ao mesmo */
+$systemColors = getColors();
 ?>
 
 
 
 <!--Aplicação das cores de tema ao sistema-->
 <script>
-    document.documentElement.style.setProperty('--palette-A', '<?php echo $systemColors[0];?>');
-    document.documentElement.style.setProperty('--palette-B', '<?php echo $systemColors[1];?>');
-    document.documentElement.style.setProperty('--palette-C', '<?php echo $systemColors[2];?>');
-    document.documentElement.style.setProperty('--palette-D', '<?php echo $systemColors[3];?>');
+    document.documentElement.style.setProperty('--palette-A', '<?php echo $systemColors[0]; ?>');
+    document.documentElement.style.setProperty('--palette-B', '<?php echo $systemColors[1]; ?>');
+    document.documentElement.style.setProperty('--palette-C', '<?php echo $systemColors[2]; ?>');
+    document.documentElement.style.setProperty('--palette-D', '<?php echo $systemColors[3]; ?>');
 </script>
 
 
@@ -34,29 +34,30 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <style>
-            .printer-object{
+    <style>
+        .printer-object {
             width: 30%;
             border-collapse: collapse;
             padding-top: 30px;
         }
 
-        .objects-container{
+        .objects-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: space-around;
         }
-        #back-icon{
+
+        #back-icon {
             display: none;
         }
-        </style>
+    </style>
     <title>volgscherm - Painel de Impressoras</title>
 
 </head>
 
 <body>
     <?php
-    include_once('headerBlock.php');//invocação do header da página 
+    include_once('headerBlock.php'); //invocação do header da página 
     ?>
     <main>
         <div class="main-nav">
@@ -77,13 +78,13 @@
                         <i class="fa fa-search"></i>
                     </button>
                 </form>
-                
+
             </div>
 
             <!--Bloco das impressoras-->
             <div class="objects-container">
                 <?php
-                    include('printerObject.php');//Invocação do arquivo gerador das tabelas(impressoras)
+                include('printerObject.php'); //Invocação do arquivo gerador das tabelas(impressoras)
                 ?>
             </div>
         </div>
