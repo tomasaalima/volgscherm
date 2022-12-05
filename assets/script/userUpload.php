@@ -1,12 +1,11 @@
 <?php
-    $filename = "";
 
         function uploadFileUser(){
-            if(isset($_POST['action-i'])){
-                $arquivo = $_FILES['arquive-i'];
+            $filename = "";   
+            if(isset($_POST['action'])){
+                $arquivo = $_FILES['arquive'];
 
-                global $filename;
-                $filename = $_FILES['arquive-i']['name'];
+                $filename = $_FILES['arquive']['name'];
                 
                 $arquivoNovo = explode('.', $arquivo['name']);
 
@@ -24,7 +23,8 @@
                 }else{
                     move_uploaded_file($arquivo['tmp_name'], 'uploads/'.$arquivo['name']);
                 }
+                rename("uploads/".$filename, "uploads/user-img.jpg");
             }
 
-            rename("uploads/".$filename, "uploads/user-img.jpg");
+            
         }

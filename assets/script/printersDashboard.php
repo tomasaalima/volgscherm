@@ -1,3 +1,20 @@
+<?php
+    require("systemThemeColors.php");
+    /*Consulta qual o tema no banco de dados e obtem um Array[4] contendo as cores respectivas ao mesmo */
+    $systemColors = getColors();
+?>
+
+
+
+<!--Aplicação das cores de tema ao sistema-->
+<script>
+    document.documentElement.style.setProperty('--palette-A', '<?php echo $systemColors[0];?>');
+    document.documentElement.style.setProperty('--palette-B', '<?php echo $systemColors[1];?>');
+    document.documentElement.style.setProperty('--palette-C', '<?php echo $systemColors[2];?>');
+    document.documentElement.style.setProperty('--palette-D', '<?php echo $systemColors[3];?>');
+</script>
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -9,6 +26,10 @@
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/home.css">
     <link rel="stylesheet" href="../css/printers.css">
+    <link rel="stylesheet" href="../css/navMenu.css">
+
+    <!--Recurso google para biblioteca de ícones-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <style>
@@ -22,6 +43,9 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: space-around;
+        }
+        #back-icon{
+            display: none;
         }
         </style>
     <title>volgscherm</title>

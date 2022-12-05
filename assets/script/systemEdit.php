@@ -1,7 +1,30 @@
 <?php
     require('sessionProtect.php');
-    include_once('userUpload.php');
+    include('userUpload.php');
+    require('db_connection.php');
+    require("systemThemeColors.php");
+
+    if(isset($_GET['dark'])){
+        $connection->query("UPDATE sistema SET tema = 'dark' ");
+    }else if(isset($_GET['light'])){
+        $connection->query("UPDATE sistema SET tema = 'light' ");
+    }else if(isset($_GET['tech'])){
+        $connection->query("UPDATE sistema SET tema = 'tech' ");
+    }
+
+    /*Consulta qual o tema no banco de dados e obtem um Array[4] contendo as cores respectivas ao mesmo */
+    $systemColors = getColors();
+
+    uploadFileUser();
 ?>
+
+<!--Aplicação das cores de tema ao sistema-->
+<script>
+    document.documentElement.style.setProperty('--palette-A', '<?php echo $systemColors[0];?>');
+    document.documentElement.style.setProperty('--palette-B', '<?php echo $systemColors[1];?>');
+    document.documentElement.style.setProperty('--palette-C', '<?php echo $systemColors[2];?>');
+    document.documentElement.style.setProperty('--palette-D', '<?php echo $systemColors[3];?>');
+</script>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -24,11 +47,12 @@
 </head>
 
 <body>
+    
 
     <?php
         require('headerBlock.php');
     ?>
-
+    
     <main>
         <div class="config-container">
             <ul class="unordered-element">
@@ -49,52 +73,57 @@
                     <div class="choose-file">
                         Mudar Imagem de Usuário
                         <form action="#" method="post" enctype="multipart/form-data">
-                            <input type="file" name="arquive-i">
-                            <input style="cursor: pointer;" type="submit" value="Aplicar" name="action-i" class="apply-btn">
+                            <input type="file" name="arquive">
+                            <input style="cursor: pointer;" type="submit" value="Aplicar" name="action" class="apply-btn">
                         </form>
                     </div>
                 </div>
                 <div class="theme-edit">
                     <div>
-                        <div id="01" class="themes link">
-                            <button class="theme-btn" onclick="setTheme('01')">
-                                <div class="dark-theme">
-                                    <div style="background-color: #1D1E26;" class="theme-color"></div>
-                                    <div style="background-color: #202126;" class="theme-color"></div>
-                                    <div style="background-color: #737272;" class="theme-color"></div>
-                                    <div style="background-color: #889ABF;" class="theme-color"></div>
-                                </div>
-                                <aside>Dark</aside>
-                            </button>
-                        </div>
-                        <div id="02" class="themes link">
-                            <button class="theme-btn" onclick="setTheme('02')">
-                                <div class="light-theme">
-                                    <div style="background-color: #ffffff;" class="theme-color"></div>
-                                    <div style="background-color: #EBE8E7;" class="theme-color"></div>
-                                    <div style="background-color: #9DFFEC;" class="theme-color"></div>
-                                    <div style="background-color: #2D73EB;" class="theme-color"></div>
-                                </div>
-                                <script src="config.js"></script>
-                                <aside>Ligh</aside>
-                            </button>
-                        </div>
-                        <div id="03" class="themes link">
-                            <button class="theme-btn" onclick="setTheme('03')">
-                                <div class="tech-theme">
-                                    <div style="background-color: #224D59;" class="theme-color"></div>
-                                    <div style="background-color: #3A8499;" class="theme-color"></div>
-                                    <div style="background-color: #58C6E5;" class="theme-color"></div>
-                                    <div style="background-color: #49A5BF;" class="theme-color"></div>
-                                </div>
-                                <aside>Tech</aside>
-                            </button>
-                        </div>
+                        <a href="systemEdit.php?dark=true">
+                            <div id="01" class="themes link">
+                                    <button class="theme-btn" onclick="setTheme('01')">
+                                        <div class="dark-theme">
+                                            <div style="background-color: #1D1E26;" class="theme-color"></div>
+                                            <div style="background-color: #202126;" class="theme-color"></div>
+                                            <div style="background-color: #737272;" class="theme-color"></div>
+                                            <div style="background-color: #889ABF;" class="theme-color"></div>
+                                        </div>
+                                        <aside>Dark</aside>
+                                    </button>
+                            </div>
+                        </a>
+                        <a href="systemEdit.php?light=true">
+                            <div id="02" class="themes link">
+                                <button class="theme-btn" onclick="setTheme('02')">
+                                    <div class="light-theme">
+                                        <div style="background-color: #ffffff;" class="theme-color"></div>
+                                        <div style="background-color: #EBE8E7;" class="theme-color"></div>
+                                        <div style="background-color: #9DFFEC;" class="theme-color"></div>
+                                        <div style="background-color: #2D73EB;" class="theme-color"></div>
+                                    </div>
+                                    <script src="themeConfig.js"></script>
+                                    <aside>Light</aside>
+                                </button>
+                            </div>
+                        </a>
+                        <a href="systemEdit.php?tech=true">
+                            <div id="03" class="themes link">
+                                <button class="theme-btn" onclick="setTheme('03')">
+                                    <div class="tech-theme">
+                                        <div style="background-color: #224D59;" class="theme-color"></div>
+                                        <div style="background-color: #3A8499;" class="theme-color"></div>
+                                        <div style="background-color: #58C6E5;" class="theme-color"></div>
+                                        <div style="background-color: #49A5BF;" class="theme-color"></div>
+                                    </div>
+                                    <aside>Tech</aside>
+                                </button>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </article>
         </div>
     </main>
 </body>
-
 </html>

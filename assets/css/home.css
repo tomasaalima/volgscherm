@@ -131,7 +131,7 @@ header {
     gap: 10%;
 }
 
-.graphic-nav-item :hover, .user-img:hover, .triple-line-menu:hover, .header-alert>div>div:hover, .graphic-nav-item {
+.graphic-nav-item :hover, .triple-line-menu:hover, .header-alert>div>div:hover, .graphic-nav-item {
     cursor: pointer;
 }
 

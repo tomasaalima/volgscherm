@@ -1,35 +1,65 @@
+<?php
+    include('db_connection.php');
+
+    $sts0 = [];
+    $sts1 = [];
+    $sts2 = [];
+    $sts3 = [];
+
+
+    $result = $connection->query("SELECT serial, status FROM impressora") or die("Falha na execução do código SQL") . $connection->error;
+
+    while($db_data = mysqli_fetch_assoc($result)){
+
+        switch($db_data['status']){
+            case '0':{
+                array_push($sts0, $db_data['serial']);
+                break;
+            }
+            case '1':{
+                array_push($sts1, $db_data['serial']);
+                break;
+            }
+            case '2':{
+                array_push($sts2, $db_data['serial']);
+                break;
+            }
+            case '3':{
+                array_push($sts3, $db_data['serial']);
+                break;
+            }
+        }   
+    }
+
+?>
+
 <header>
     <div class='header-logo'>
+        <a href="dashboardHome.php"><i id="back-icon" class="material-symbols-outlined">arrow_back</i></a>
     </div>
     <div class='header-alert'>
         <div>
-            <div style='background-color: rgba(255, 0, 0, 0.7);'>
+            <div title="Dispositivos com Problemas" style='background-color: rgba(255, 0, 0, 0.7);'>
                 <strong class='alert'>!!</strong>
-                <span class='badge'>5</span>
+                <span class='badge'><?php echo count($sts3);?></span>
             </div>
         </div>
         <div>
-            <div style='background-color: rgba(0, 132, 255, 0.7);'>
-                <strong class='alert'>U</strong>
-                <span class='badge'>5</span>
+            <div title="Dispositivos com Baixa Carga" style='background-color: rgba(0, 132, 255, 0.7);'>
+                <strong class='alert'>BC</strong>
+                <span class='badge'><?php echo count($sts1);?></span>
             </div>
         </div>
         <div>
-            <div style='background-color: rgba(208, 255, 0, 0.7);'>
-                <strong class='alert'>V</strong>
-                <span class='badge'>5</span>
+            <div title="Novos Dispositivos" style='background-color: rgba(208, 255, 0, 0.7);'>
+                <strong class='alert'>ND</strong>
+                <span class='badge'><?php echo count($sts0);?></span>
             </div>
         </div>
         <div>
-            <div style='background-color: rgba(255, 136, 0, 0.7);'>
-                <strong class='alert'>W</strong>
-                <span class='badge'>5</span>
-            </div>
-        </div>
-        <div>
-            <div style='background-color: rgba(133, 125, 125, 0.7);'>
-                <strong class='alert'>?</strong>
-                <span class='badge'>5</span>
+            <div title="Dispositivos Desativados" style='background-color: rgba(133, 125, 125, 0.7);'>
+                <strong class='alert'>DD</strong>
+                <span class='badge'><?php echo count($sts2);?></span>
             </div>
         </div>
     </div>

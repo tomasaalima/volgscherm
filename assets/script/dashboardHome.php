@@ -1,5 +1,6 @@
 <?php
     require('dashboardHome_control.php');
+    require('sessionProtect.php');
 ?>
 
 <!--Aplicação das cores de tema ao sistema-->
@@ -33,6 +34,9 @@
         }
         .actual-period {
             border-bottom: 1px solid var(--palette-D) ;
+        }
+        #back-icon{
+            display: none;
         }
     </style>
 
