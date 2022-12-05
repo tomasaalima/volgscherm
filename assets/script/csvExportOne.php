@@ -30,7 +30,7 @@ function generateCSV($sql){
         $file = fopen("php://output", 'w');
 
         // Criar o cabeçalho do Excel - Usar a função mb_convert_encoding para converter carateres especiais
-        $header = ['Serial', 'Data', 'Novas Impressões', mb_convert_encoding('','ISO-8859-1', 'UTF-8')];
+        $header = ['Nome', 'Serial', 'Impressões Totais', mb_convert_encoding('','ISO-8859-1', 'UTF-8')];
 
         // Escrever o cabeçalho no arquivo
         fputcsv($file, $header, ',');
@@ -47,6 +47,6 @@ function generateCSV($sql){
         //fclose($file);
         
     }else{ // Acessa O ELSE quando não encontrar nenhum registro no BD
-        header("Location: /index.php");
+        header("Location: dashboardHome.php");
     }
 }

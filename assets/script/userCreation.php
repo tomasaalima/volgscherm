@@ -69,7 +69,7 @@ if (isset($_POST['user-name']) || isset($_POST['password']) || isset($_POST['rep
                 <label class="label-formulary" for="user">Chave do Produto</label>
                 <input class="input-formulary" type="text" name="key">
                 <div class="sub-elements">
-                    <a href="">Resgatar Chave de Acesso</a>
+                    <a href="keyGuide.php">Resgatar Chave de Acesso</a>
                 </div>
                 <div class="form-btns">
                     <a class="submit-btn" href="../../index.php">

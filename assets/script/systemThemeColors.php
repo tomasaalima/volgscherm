@@ -13,7 +13,7 @@
     
         switch($themeName){
             case 'light':{
-                $systemColors = ['#ffffff','#EBE8E7','#9DFFEC','#2D73EB'];
+                $systemColors = ['#ffffff','#EBE8E7','#9CAEF5','#2D73EB'];
                 break;
             }
             case 'dark':{

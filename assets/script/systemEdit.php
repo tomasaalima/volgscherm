@@ -50,17 +50,24 @@
     
 
     <?php
-        require('headerBlock.php');
+        require('headerBlock.php');//invocação do header da página 
     ?>
     
     <main>
         <div class="config-container">
             <ul class="unordered-element">
                 <div class="config-topics actual-atribute">
-                    <li class="li-topic">Personalização</li>
+                    <a href="systemEdit.php">
+                        <li class="li-topic">Personalização</li>
+                    </a>
                 </div>
                 <div class="config-topics">
-                    <a href="">
+                    <a href="userDelete.php">
+                        <li class="li-topic">Deletar Usuário</li>
+                    </a>
+                </div>
+                <div class="config-topics">
+                    <a href="helpScreen.php">
                         <li class="li-topic">Ajuda</li>
                     </a>
                 </div>

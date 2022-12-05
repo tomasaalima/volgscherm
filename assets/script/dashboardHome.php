@@ -199,37 +199,57 @@
         require('headerBlock.php');//invocação do header da página 
     ?>
     <main>
+
+        <!--Navegação entre painéis-->
         <div class="main-nav">
             <nav>
-                <a href="#" class="actual">DashBoard</a>
-                <a href="printersDashboard.php">Impressoras</a>
+                <a title="Painel principal" href="#" class="actual">DashBoard</a>
+                <a title="Painel de impressoras" href="printersDashboard.php">Impressoras</a>
             </nav>
         </div>
+
+        <!--Container de informações-->
         <div class="main-info">
-            <div class="info-group">
+            <div title="Feedback sobre a integridade do sistema" class="info-group">
                 Status:
-                <span class="info-data">OK</span>
-                Intervalo definido:
+                <span class="info-data">Ok</span>
+                Dependências:
+                <span class="info-data"></span>
+            </div>
+            <div title="Contador a partir da última execução" class="info-group">
+                Último auto-recover:
+                <span class="info-data">25 Dias Atrás</span>
+                Última captura de dados:
+                <span class="info-data">3 minutos 43 segundos</span>
+            </div>
+            <div title="Definições de intervalos " class="info-group">
+                Intervalo(auto-recover):
+                <span class="info-data">30 dias</span>
+                Intervalo(captura de dados):
                 <span class="info-data">5 minutos</span>
             </div>
-            <div class="info-group">
-                Last auto-recover:
-                <span>25 Dias Atrás</span>
+            <div title="Faixa IP para busca" class="info-group">
+                Faixa incial de Busca:
+                <span class="info-data">10.26.1.200</span>
+                Faixa Final de Busca:
+                <span class="info-data">10.26.1.300</span>
             </div>
         </div>
+
+        <!--Container de gráficos-->
         <div class="main-dashboard">
             <nav class="period-nav">
-                <a id="1D" href="dashboardHome.php?1D=true">1D</a>
-                <a id="1M" href="dashboardHome.php?1M=true">1M</a>
-                <a id="5M" href="dashboardHome.php?5M=true">5M</a>
-                <a id="1A" href="dashboardHome.php?1A=true">1A</a>
-                <a id="MAX" href="dashboardHome.php?MAX=true">MAX</a>
+                <a title="Indicador de período 1 Dia" id="1D" href="dashboardHome.php?1D=true">1D</a>
+                <a title="Indicador de período 1 Mês" id="1M" href="dashboardHome.php?1M=true">1M</a>
+                <a title="Indicador de período 5 Meses" id="5M" href="dashboardHome.php?5M=true">5M</a>
+                <a title="Indicador de período 1 Ano" id="1A" href="dashboardHome.php?1A=true">1A</a>
+                <a title="Indicador de período Total" id="MAX" href="dashboardHome.php?MAX=true">MAX</a>
             </nav>
 
             <!--Chamado aos gráficos charts-->
-            <div id="line-chart" style="width: 100%; height: 500px;"></div>
-            <div id="bar-chart" style="width: 100%; height: 500px;"></div>
-            <div id="pie-chart" style="width: 50%; height: 500px; margin: auto;"></div>
+            <div title="Gráfico de linhas de impressões por data" id="line-chart" style="width: 100%; height: 500px;"></div>
+            <div title="Gráfico de barras de impressões por impressora" id="bar-chart" style="width: 100%; height: 500px;"></div>
+            <div title="Gráfico em pizza de impressões por setor" id="pie-chart" style="width: 50%; height: 500px; margin: auto;"></div>
 
             <script>
                 /*Aplica bordar em baixo no periodo selecionado*/
@@ -238,15 +258,22 @@
                     document.getElementById(id).style.borderBottom = "2px solid var(--palette-D)";
                 }
             </script>
+
+            <!--Links de downloads-->
             <div class="printer-btns">
-                <p><a href="csvExport.php" class="report-btn">Exportar Relatório</a></p>
+                <p title="Realizar download de arquivo em formato de planilha">Exportar Relatórios:</p>
+                <p title="Planilha com o número de impressões diárias, junto ao número de impressoras ultilizadas"><a href="csvExportOne.php" class="report-btn">Tabela Geral(impressões/data)</a></p>
+                <p title="Planilha com o total de impressões de cada impressora"><a href="csvExportTwo.php" class="report-btn">Tabela Impressoras(impressões/impressora)</a></p>
+                <p title="Planilha com o total de impressões por setor"><a href="csvExportThree.php" class="report-btn">Tabela Setores(impressões/setor)</a></p>
             </div>
 
         </div>
         
+        <!--Container de Histórico-->
         <div class="historic">
-            <h1>HISTÓRICO</h1>
+            <h1 title="Histórico de dados adquiridos na rede">HISTÓRICO</h1>
             <?php 
+                //Importação de bloco do histórico
                 require('historicBlock.php');
             ?>
         </div>

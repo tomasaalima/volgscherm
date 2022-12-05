@@ -7,10 +7,10 @@
     echo "<table class='historic-table'>
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>SERIAL</th>
-                    <th>DATA</th>
-                    <th>Nº DE IMPRESSÕES</th>
+                    <th title='Chave identificadora da captura'>ID</th>
+                    <th title='Número de fábrica do dispositivo'>SERIAL</th>
+                    <th title='Data de captura do dado'>DATA</th>
+                    <th title='Quantidade de impressões realizadas'>Nº DE IMPRESSÕES</th>
                 </tr>
             </thead>
             <tbody>
@@ -18,10 +18,10 @@
 
     while($db_data = mysqli_fetch_assoc($result)){
         echo "<tr>
-                <td>".$db_data['id']."</td>
-                <td>".$db_data['serial_impressora']."</td>
-                <td>".$db_data['data_execucao']."</td>
-                <td>".$db_data['novas_impressoes']."</td>
+                <td title='Chave identificadora da captura'>".$db_data['id']."</td>
+                <td title='Número de fábrica do dispositivo'>".$db_data['serial_impressora']."</td>
+                <td title='Data de captura do dado'>".$db_data['data_execucao']."</td>
+                <td title='Quantidade de impressões realizadas'>".$db_data['novas_impressoes']."</td>
             </tr>
         ";
     }
