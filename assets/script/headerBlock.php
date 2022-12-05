@@ -73,13 +73,13 @@
 
     <!--Imagem do usuário e menu hamburguer-->
     <div class='header-user'>
-        <div class='user-image'>
+        <div title="Imagem do usuário" class='user-image'>
             <img class='user-img' src='uploads/user-img.jpg' alt='imagem do usuário'>
         </div>
         <div class='line'>
             <hr>
         </div>
-        <div class='triple-line-menu'>
+        <div title="Menu Hamburguer" class='triple-line-menu'>
         <i id="burguer" class="material-symbols-outlined" onclick="openMenu()">menu</i>
         <script>
             function openMenu(){
@@ -101,13 +101,13 @@
 <nav id="menu-nav">
         <menu id="menu">
             <ul>
-                <li>
+                <li title="Ir para tela de configurações">
                     <a href="systemEdit.php">
                     <i class="material-symbols-outlined">settings</i>
                     Configurações 
                     </a>
                 </li>
-                <li>
+                <li title="Realizar Logout">
                     <a href="userLogout.php">
                     <i class="material-symbols-outlined">logout</i>
                     Logout 

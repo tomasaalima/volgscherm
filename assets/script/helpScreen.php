@@ -64,17 +64,17 @@
     <main>
         <div class="config-container">
             <ul class="unordered-element">
-                <div class="config-topics">
+                <div title="Opção de personalização do sistema" class="config-topics">
                     <a href="systemEdit.php">
                         <li class="li-topic">Personalização</li>
                     </a>
                 </div>
-                <div class="config-topics">
+                <div title="Opção de exclusão de conta" class="config-topics">
                     <a href="userDelete.php">
                         <li class="li-topic">Deletar Usuário</li>
                     </a>
                 </div>
-                <div class="config-topics actual-atribute">
+                <div title="Informações sobre o sistema" class="config-topics actual-atribute">
                     <a href="helpScreen.php">
                         <li class="li-topic">Ajuda</li>
                     </a>
@@ -85,17 +85,17 @@
             <article>
                 <p>
                     <!--Redirecionamento Github-->
-                    O projeto <strong>Volgscherm</strong> está em constante desenvolvimento e é disponibilizado remotamente no <a target="_blank" href="https://github.com/tomasaalima/volgscherm"><strong>GitHub.</strong></a>
+                    O projeto <strong>Volgscherm</strong> está em constante desenvolvimento e é disponibilizado remotamente no <a target="_blank" href="https://github.com/tomasaalima/volgscherm"><strong title="Direcionar ao GitHub">GitHub.</strong></a>
                 </p>
                 <p>
                     <!--Redirecionamento para envio de e-mail-->
-                    Para sugestões ou reportar bugs você poderá entrar em contado pelo email: <a target="_blank" href="mailto:taal@discente.ifpe.edu.br"><strong>taal@discente.ifpe.edu.br.</strong></a>
+                    Para sugestões ou reportar bugs você poderá entrar em contado pelo email: <a target="_blank" href="mailto:taal@discente.ifpe.edu.br"><strong title="Enviar E-mail">taal@discente.ifpe.edu.br.</strong></a>
                 </p>
                 <p>
                     Para mais informações consultar a documentação do sistema.
                 </p>
                 <!--imagem volgscherm-->
-                <picture>
+                <picture title="Logo da impresa">
                     <img src="../img/logo.png" alt="logo volgscherm">
                 </picture>
             </article>

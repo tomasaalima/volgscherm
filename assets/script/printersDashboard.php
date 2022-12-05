@@ -70,10 +70,10 @@
         <div class="main-slots">
 
             <!--Barra de busca-->
-            <div class="search-bar">
+            <div title="Campo de busca" class="search-bar">
                 <form action="" method="post">
                     <input type="text" placeholder="Search..">
-                    <button class="glass" type="submit">
+                    <button title="Buscar" class="glass" type="submit">
                         <i class="fa fa-search"></i>
                     </button>
                 </form>

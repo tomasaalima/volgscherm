@@ -7,7 +7,7 @@
 
     //Bloco de impressoras em forma de tabela
     while($db_data = mysqli_fetch_assoc($result)){
-        echo "<table class='printer-object'>
+        echo "<table title=".$db_data['serial']." class='printer-object'>
         <thead>
             <tr>
                 <th colspan='2'><img width='100%' src='../img/printer.png' alt='logo de uma impressora'></th>

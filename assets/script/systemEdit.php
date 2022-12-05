@@ -67,17 +67,17 @@
         <!--Bloco de opções-->
         <div class="config-container">
             <ul class="unordered-element">
-                <div class="config-topics actual-atribute">
+                <div title="Opção de personalização do sistema" class="config-topics actual-atribute">
                     <a href="systemEdit.php">
                         <li class="li-topic">Personalização</li>
                     </a>
                 </div>
-                <div class="config-topics">
+                <div title="Opção de exclusão de conta" class="config-topics">
                     <a href="userDelete.php">
                         <li class="li-topic">Deletar Usuário</li>
                     </a>
                 </div>
-                <div class="config-topics">
+                <div title="Informações sobre o sistema" class="config-topics">
                     <a href="helpScreen.php">
                         <li class="li-topic">Ajuda</li>
                     </a>
@@ -89,12 +89,12 @@
                 <div class="img-edit">
 
                     <!--Imagem do usuário-->
-                    <div>
+                    <div title="Imagem do usuário">
                         <img class="user-img-edit" src="uploads/user-img.jpg" alt="imagem do usuário">
                     </div>
 
                     <!--Formulário de upload-->
-                    <div class="choose-file">
+                    <div title="Realizar Upload" class="choose-file">
                         Mudar Imagem de Usuário
                         <form action="#" method="post" enctype="multipart/form-data">
                             <input type="file" name="arquive">
@@ -107,7 +107,7 @@
                 <div class="theme-edit">
                     <div>
                         <a href="systemEdit.php?dark=true">
-                            <div id="01" class="themes link">
+                            <div title="Tema Dark" id="01" class="themes link">
 
                                     <!--Tema Dark-->
                                     <button class="theme-btn" onclick="setTheme('01')">
@@ -122,7 +122,7 @@
                             </div>
                         </a>
                         <a href="systemEdit.php?light=true">
-                            <div id="02" class="themes link">
+                            <div title="Tema Light" id="02" class="themes link">
 
                                 <!--Tema Light-->
                                 <button class="theme-btn" onclick="setTheme('02')">
@@ -138,7 +138,7 @@
                             </div>
                         </a>
                         <a href="systemEdit.php?tech=true">
-                            <div id="03" class="themes link">
+                            <div title="Tema Tech" id="03" class="themes link">
 
                                 <!--Tema Tech-->
                                 <button class="theme-btn" onclick="setTheme('03')">

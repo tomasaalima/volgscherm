@@ -85,17 +85,17 @@
         <!--Bloco de opções-->
         <div class="config-container">
             <ul class="unordered-element">
-                <div class="config-topics">
+                <div title="Opção de personalização do sistema" class="config-topics">
                     <a href="systemEdit.php">
                         <li class="li-topic">Personalização</li>
                     </a>
                 </div>
-                <div class="config-topics actual-atribute">
+                <div title="Opção de exclusão de conta" class="config-topics actual-atribute">
                     <a href="userDelete.php">
                         <li class="li-topic">Deletar Usuário</li>
                     </a>
                 </div>
-                <div class="config-topics">
+                <div title="Informações sobre o sistema" class="config-topics">
                     <a href="helpScreen.php">
                         <li class="li-topic">Ajuda</li>
                     </a>
@@ -108,13 +108,13 @@
                 <!--Formulário para remoção do usuário(inserção de chave do produto)-->
                 <form action="" method="post">
                     <p>Se deletar essa conta será direcionado a tela de login e não poderá mais iniciar sessão com os dados da mesma.</p>
-                    <div>
+                    <div title="Chave serial do produto">
                         <label for="productKey">Chave do Produto</label>
                         <input type="text" name="productKey">
                     </div>
                     
                     <!--Botão de confirmação-->
-                    <div><input type="submit" value="Deletar Minha Conta"></div>
+                    <div title="Deletar sua conta"><input type="submit" value="Deletar Minha Conta"></div>
                 </form>
             </article>
         </div>
