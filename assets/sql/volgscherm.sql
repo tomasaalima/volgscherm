@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 03-Dez-2022 às 21:50
+-- Tempo de geração: 06-Dez-2022 às 15:23
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.1.12
 
@@ -37,7 +37,7 @@ CREATE TABLE `administrador` (
 --
 
 INSERT INTO `administrador` (`usuario`, `senha`) VALUES
-('tom', '123');
+('tom', '321');
 
 -- --------------------------------------------------------
 
@@ -846,31 +846,31 @@ CREATE TABLE `impressora` (
 --
 
 INSERT INTO `impressora` (`serial`, `nome`, `endereco_ip`, `data_reconhecimento`, `modelo`, `status`, `setor`) VALUES
-('BRFSG9B018', 'Impressora no Bloco de Engenha', '10.26.1.226', '2022-11-30', 'HP LaserJet M1536dnf MFP', 0, 'DDE'),
-('BRFSG9B020', 'Impressora no Bloco de Engenha', '10.26.1.227', '2022-11-02', 'HP laser 45621', 0, 'CGAE'),
+('BRFSG9B018', 'Impressora no Bloco de Engenha', '10.26.1.226', '2022-11-30', 'HP LaserJet M1536dnf MFP', 3, 'DDE'),
+('BRFSG9B020', 'Impressora no Bloco de Engenha', '10.26.1.227', '2022-11-02', 'HP laser 45621', 2, 'CGAE'),
 ('BRFSG9B021', 'Impressora no Bloco de Engenha', '10.26.1.229', '2022-11-08', 'HP DeskJet Advantage 2774', 0, 'CGAE'),
 ('BRFSG9B022', 'Impressora Bloco de Engenharia', '10.26.1.230', '2020-01-01', 'HP DeskJet Advantage 2774', 0, 'CGAE'),
 ('BRFSG9B023', 'Impressora Bloco de Engenharia', '10.26.1.231', '2020-01-02', 'HP DeskJet Advantage 2774', 0, 'CGAE'),
 ('BRFSG9B024', 'Impressora Bloco de Engenharia', '10.26.1.232', '2020-01-01', 'HP DeskJet Advantage 2774', 0, 'CGAE'),
-('BRFSG9B025', 'Impressora Bloco de Engenharia', '10.26.1.233', '2020-01-02', 'HP DeskJet Advantage 2774', 0, 'CGAE'),
+('BRFSG9B025', 'Impressora Bloco de Engenharia', '10.26.1.233', '2020-01-02', 'HP DeskJet Advantage 2774', 1, 'CGAE'),
 ('BRFSG9B026', 'Impressora Bloco de Engenharia', '10.26.1.234', '2020-01-03', 'HP DeskJet Advantage 2774', 0, 'CGAE'),
 ('BRFSG9B027', 'Impressora Bloco de Engenharia', '10.26.1.235', '2020-01-04', 'HP DeskJet Advantage 2774', 0, 'CGAE'),
 ('BRFSG9B028', 'Impressora Bloco de Engenharia', '10.26.1.236', '2020-01-05', 'HP DeskJet Advantage 2774', 0, 'CGAE'),
 ('BRFSG9B029', 'Impressora Bloco de Engenharia', '10.26.1.237', '2020-01-06', 'HP DeskJet Advantage 2774', 0, 'CGAE'),
-('BRFSG9B030', 'Impressora Bloco de Engenharia', '10.26.1.238', '2020-01-07', 'HP DeskJet Advantage 2774', 0, 'CGAE'),
+('BRFSG9B030', 'Impressora Bloco de Engenharia', '10.26.1.238', '2020-01-07', 'HP DeskJet Advantage 2774', 2, 'CGAE'),
 ('BRFSG9B031', 'Impressora Bloco de Engenharia', '10.26.1.239', '2020-01-08', 'HP DeskJet Advantage 2774', 0, 'CGAE'),
 ('BRFSG9B032', 'Impressora Bloco de Engenharia', '10.26.1.240', '2020-01-09', 'HP DeskJet Advantage 2774', 0, 'CGAE'),
 ('BRFSG9B033', 'Impressora Bloco de Engenharia', '10.26.1.241', '2020-01-10', 'HP DeskJet Advantage 2774', 0, 'CGAE'),
 ('BRFSG9B034', 'Impressora Bloco de Engenharia', '10.26.1.242', '2020-01-11', 'HP DeskJet Advantage 2774', 0, 'CGAE'),
-('BRFSG9B035', 'Impressora Bloco de Engenharia', '10.26.1.243', '2020-01-12', 'HP DeskJet Advantage 2774', 0, 'CGAE'),
+('BRFSG9B035', 'Impressora Bloco de Engenharia', '10.26.1.243', '2020-01-12', 'HP DeskJet Advantage 2774', 2, 'CGAE'),
 ('BRFSG9B036', 'Impressora Bloco de Engenharia', '10.26.1.244', '2020-01-13', 'HP DeskJet Advantage 2774', 0, 'CGAE'),
-('BRFSG9B037', 'Impressora Bloco de Engenharia', '10.26.1.245', '2020-01-14', 'HP DeskJet Advantage 2774', 0, 'CGAE'),
+('BRFSG9B037', 'Impressora Bloco de Engenharia', '10.26.1.245', '2020-01-14', 'HP DeskJet Advantage 2774', 1, 'CGAE'),
 ('BRFSG9B038', 'Impressora Bloco de Engenharia', '10.26.1.246', '2020-01-15', 'HP DeskJet Advantage 2774', 0, 'CGAE'),
 ('BRFSG9B039', 'Impressora Bloco de Engenharia', '10.26.1.247', '2020-01-16', 'Epson EcoTank L4260', 0, 'CGAE'),
-('BRFSG9B040', 'Impressora Bloco de Engenharia', '10.26.1.248', '2020-01-17', 'Epson EcoTank L4260', 0, 'CGAE'),
+('BRFSG9B040', 'Impressora Bloco de Engenharia', '10.26.1.248', '2020-01-17', 'Epson EcoTank L4260', 1, 'CGAE'),
 ('BRFSG9B041', 'Impressora Bloco de Engenharia', '10.26.1.249', '2020-01-18', 'Epson EcoTank L4260', 0, 'CGAE'),
 ('BRFSG9B042', 'Impressora Bloco de Engenharia', '10.26.1.250', '2020-01-19', 'Epson EcoTank L4260', 0, 'CGAE'),
-('BRFSG9B043', 'Impressora Bloco de Engenharia', '10.26.1.251', '2020-01-20', 'Epson EcoTank L4260', 0, 'CGAE'),
+('BRFSG9B043', 'Impressora Bloco de Engenharia', '10.26.1.251', '2020-01-20', 'Epson EcoTank L4260', 2, 'CGAE'),
 ('BRFSG9B044', 'Impressora Bloco de Engenharia', '10.26.1.252', '2020-01-21', 'Epson EcoTank L4260', 0, 'CGAE'),
 ('BRFSG9B045', 'Impressora Bloco de Engenharia', '10.26.1.253', '2020-01-22', 'Epson EcoTank L4260', 0, 'CGAE'),
 ('BRFSG9B046', 'Impressora Bloco de Engenharia', '10.26.1.254', '2020-01-23', 'Epson EcoTank L4260', 0, 'CGAE'),
