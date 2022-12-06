@@ -57,7 +57,24 @@ uploadFileUser();
 
 <body>
 
+    <!--Ivocação da biblioteca respectiva aos sweetalerts-->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    <script>
+
+        //Execução do sweetAlert
+        <?php
+        if ($SweetAlert === true){
+            echo "Swal.fire({
+                icon: '$icon',
+                title: '$title',
+                text: '$message'
+                })";
+                $SweetAlert = false;
+        }
+        ?>
+    </script>
+    
     <?php
     require('headerBlock.php'); //invocação do header da página 
     ?>

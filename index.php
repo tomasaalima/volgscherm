@@ -2,13 +2,32 @@
 //Solicita arquivo de conexão
 require("assets/script/db_connection.php");
 
+//Contenção do alerta
+$SweetAlert = false;
+
+//Parâmetros para SweetAlerts
+$message = "";
+$icon = "";
+$title = "";
+
 if (isset($_POST['user']) || isset($_POST['password'])) {
 
     //Validação do usuário
     if (strlen($_POST['user'] == "")) {
-        echo "Preencha o nome de usuário";
+        $message = "Preencha o nome de usuário";
+        $icon = "error";
+        $title = "Preencha todos os campos";
+
+        //Autorização do alerta
+        $SweetAlert = True;
+
     } else if (strlen($_POST['password'] == "")) {
-        echo "Preencha sua senha";
+        $message = "Preencha sua senha";
+        $icon = "warning";
+        $title = "Preencha todos os campos";
+        //Autorização do alerta
+        $SweetAlert = True;
+
     } else {
 
         //Tratamendo de campos de texto
@@ -34,7 +53,12 @@ if (isset($_POST['user']) || isset($_POST['password'])) {
             header("location: assets/script/dashboardHome.php");
         } else {
             //Bloqueia acesso
-            echo "Falha ao logar! Usuário ou Senha Incorretos";
+            $message = "Falha ao logar! Usuário ou Senha Incorretos";
+            $icon = "error";
+            $title = "Dados Inválidos";
+
+            //Autorização do alerta
+            $SweetAlert = True;
         }
     }
 }
@@ -57,6 +81,25 @@ if (isset($_POST['user']) || isset($_POST['password'])) {
 </head>
 
 <body>
+
+    <!--Ivocação da biblioteca respectiva aos sweetalerts-->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+
+        //Execução do sweetAlert
+        <?php
+        if ($SweetAlert === true){
+            echo "Swal.fire({
+                icon: '$icon',
+                title: '$title',
+                text: '$message'
+                })";
+                $SweetAlert = false;
+        }
+        ?>
+    </script>
+
     <div class="container-login">
         <img class="logo-image" src="assets/img/logo.png" alt="logo da empresa">
         <div class="container-line">
@@ -75,7 +118,6 @@ if (isset($_POST['user']) || isset($_POST['password'])) {
                     <a href="assets/script/userCreation.php">Cadastrar Usuário</a>
                 </div>
                 <div class="form-btns">
-
                     <!--Submete ação-->
                     <button class="submit-btn" type="submit">Executar</button>
                 </div>

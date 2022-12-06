@@ -5,17 +5,45 @@ require("db_connection.php");
 //invoca arquivo contendo dados sobre a chave do produto
 include_once("systemKey.php");
 
+//Contenção do alerta
+$SweetAlert = false;
+
+//Parâmetros para SweetAlerts
+$message = "";
+$icon = "";
+$title = "";
+
 if (isset($_POST['user-name']) || isset($_POST['password']) || isset($_POST['repeat-password']) || isset($_POST['key'])) {
 
     //verifica o preenchimento dos campos
     if (strlen($_POST['user-name'] == "")) {
-        echo "Preencha o nome de usuário";
+        $message = "Preencha o nome de usuário";
+        $icon = "warning";
+        $title = "Preencha todos os campos";
+
+        //Autorização do alerta
+        $SweetAlert = True;
     } else if (strlen($_POST['password'] == "")) {
-        echo "Preencha sua senha";
+        $message = "Preencha sua senha";
+        $icon = "warning";
+        $title = "Preencha todos os campos";
+
+        //Autorização do alerta
+        $SweetAlert = True;
     } else if (strlen($_POST['repeat-password'] == "")) {
-        echo "Repita sua senha";
+        $message = "Repita sua senha";
+        $icon = "warning";
+        $title = "Preencha todos os campos";
+
+        //Autorização do alerta
+        $SweetAlert = True;
     } else if (strlen($_POST['key'] == "")) {
-        echo "Informe a chave do produto";
+        $message = "Informe a chave do produto";
+        $icon = "warning";
+        $title = "Preencha todos os campos";
+
+        //Autorização do alerta
+        $SweetAlert = True;
     } else {
 
         //Trata os campos de entrada de texto
@@ -31,15 +59,35 @@ if (isset($_POST['user-name']) || isset($_POST['password']) || isset($_POST['rep
 
         //Verifica a existência do usuário no banco de dados
         if ($quantidade == 1) {
-            echo "Esse usuário já existe";
+            $message = "Este usuário já existe";
+            $icon = "error";
+            $title = "Tente outro valor";
+
+            //Autorização do alerta
+            $SweetAlert = True;
         } else if ($password != $repeat_password) {
-            echo "As senhas não coincidem";
+            $message = "As senhas não coincidem";
+            $icon = "error";
+            $title = "Tente novamente";
+
+            //Autorização do alerta
+            $SweetAlert = True;
         } else if ($key != $product_key) {
-            echo "Essa não é uma chave válida";
+            $message = "Essa não é uma chave válida";
+            $icon = "error";
+            $title = "Tente um valor válido";
+
+            //Autorização do alerta
+            $SweetAlert = True;
         } else {
             $sql = "INSERT INTO administrador(usuario,senha) VALUES('$user', '$password')";
             $connection->query($sql);
-            echo "Usuário cadastrado com sucesso";
+
+            $icon = "success";
+            $title = "Usuário cadastrado com sucesso";
+
+            //Autorização do alerta
+            $SweetAlert = True;
         }
     }
 }
@@ -60,6 +108,24 @@ if (isset($_POST['user-name']) || isset($_POST['password']) || isset($_POST['rep
 </head>
 
 <body>
+
+    <!--Ivocação da biblioteca respectiva aos sweetalerts-->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        //Execução do sweetAlert
+        <?php
+        if ($SweetAlert === true) {
+            echo "Swal.fire({
+            icon: '$icon',
+            title: '$title',
+            text: '$message'
+            })";
+            $SweetAlert = false;
+        }
+        ?>
+    </script>
+
     <div class="container-login">
         <img class="logo-image" src="../img/logo.png" alt="logo da empresa">
         <div class="container-line">

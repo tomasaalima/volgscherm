@@ -11,14 +11,28 @@ require('systemThemeColors.php');
 //invoca arquivo contendo dados sobre a chave do produto
 require('systemKey.php');
 
+//Contenção do alerta
+$SweetAlert = false;
+
+//Parâmetros para SweetAlerts
+$message = "";
+$icon = "";
+$title = "";
+
 //Verifica correspondência da chave do produto
 if (isset($_POST['productKey'])) {
     $key = $_POST['productKey'];
 
     if ($key != $product_key) {
-        echo "A chave inserida não é válida";
-    } else {
+        //Bloqueia acesso
+        $message = "A chave inserida não é válida";
+        $icon = "error";
+        $title = "Dados Inválidos";
 
+        //Autorização do alerta
+        $SweetAlert = True;
+        
+    } else {
         //Deleta o usuário atual
         $user = $_SESSION['user'];
         $connection->query("DELETE FROM administrador WHERE usuario = '$user'");
@@ -79,6 +93,24 @@ $systemColors = getColors();
     <?php
     require('headerBlock.php'); //invocação do header da página 
     ?>
+
+    <!--Ivocação da biblioteca respectiva aos sweetalerts-->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+
+        //Execução do sweetAlert
+        <?php
+        if ($SweetAlert === true){
+            echo "Swal.fire({
+                icon: '$icon',
+                title: '$title',
+                text: '$message'
+                })";
+                $SweetAlert = false;
+        }
+        ?>
+    </script>
 
     <main>
 

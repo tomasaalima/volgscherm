@@ -1,7 +1,17 @@
 <?php
+//Contenção do alerta
+$SweetAlert = false;
+
+//Parâmetros para SweetAlerts
+$message = "";
+$icon = "";
+$title = "";
+
 //Recebe arquivo JPG enviado pelo usuário
 function uploadFileUser()
 {
+    global $message, $icon, $title, $SweetAlert;
+
     $filename = "";
     if (isset($_POST['action'])) {
         $arquivo = $_FILES['arquive'];
@@ -13,14 +23,25 @@ function uploadFileUser()
 
         //verifica inserção do arquivo
         if ($filename == "") {
-            echo "<span style='color: #F75448;''>Você esqueceu de selecionar o arquivo para: imagem de usuário</span>";
+            $message = "Você esqueceu de selecionar o arquivo para: imagem de usuário";
+            $icon = "error";
+            $title = "Selecione-o clicando no botão 'Selecionar Arquivo'";
+
+            //Autorização do alerta
+            $SweetAlert = True;
+
             return null;
         }
 
         //Permite apenas arquivos .JPG
         if ($arquivoNovo[sizeof($arquivoNovo) - 1] != 'jpg') {
-            echo "<span style='color: #F75448;''>O arquivo precisa contemplar a seguinte extensão: PNG</span>";
+            $message = "O arquivo precisa contemplar a seguinte extensão: PNG";
+            $icon = "error";
+            $title = "tente uma imagem válida";
 
+            //Autorização do alerta
+            $SweetAlert = True;
+            
             return null;
         } else {
             move_uploaded_file($arquivo['tmp_name'], 'uploads/' . $arquivo['name']);
