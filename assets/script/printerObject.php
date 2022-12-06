@@ -2,7 +2,16 @@
 //Invoca arquivo que realiza a conexão com o banco de dados
 require('db_connection.php');
 
-$sql = "SELECT serial, nome, endereco_ip, data_reconhecimento, modelo, setor FROM impressora";
+//Invoca arquivo para controlar busca
+require('searchPrinter.php');
+
+if($search == ''){
+    $sql = "SELECT serial, nome, endereco_ip, data_reconhecimento, modelo, setor FROM impressora";
+}else{
+    $sql = "SELECT serial, nome, endereco_ip, data_reconhecimento, modelo, setor FROM impressora WHERE serial LIKE '%$search%'";
+}
+
+
 $result = $connection->query($sql) or die("Falha na execução do código SQL") . $connection->error;
 
 //Bloco de impressoras em forma de tabela

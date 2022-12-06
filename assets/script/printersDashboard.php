@@ -2,6 +2,12 @@
 //invoca arquivo para trabalhar com os temas do sistema e suas respectivas cores
 require("systemThemeColors.php");
 
+//Invoca arquivo que protege a sessão, evitando acesso sem log-in
+require('sessionProtect.php');
+
+//Invoca arquivo para controlar busca
+require('searchPrinter.php');
+
 /*Consulta qual o tema no banco de dados e obtem um Array[4] contendo as cores respectivas ao mesmo */
 $systemColors = getColors();
 ?>
@@ -73,7 +79,7 @@ $systemColors = getColors();
             <!--Barra de busca-->
             <div title="Campo de busca" class="search-bar">
                 <form action="" method="post">
-                    <input type="text" placeholder="Search..">
+                    <input type="text" placeholder="Search.." name="search">
                     <button title="Buscar" class="glass" type="submit">
                         <i class="fa fa-search"></i>
                     </button>
